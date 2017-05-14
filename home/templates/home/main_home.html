@@ -1,1 +1,15 @@
-<h1>Hello, World!</h1>
+{% extends 'base.html' %}
+
+<html>
+{% block title %}Welcome Home {% endblock %}
+
+<body>
+    {% block pagecontent %}
+    <h1>Welcome to Mythical Learning</h1>
+    <h4>We are currently under Construction.<br> Come back after few more days</h4>
+    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+    {% endblock %}
+</body>
+
+</html>
