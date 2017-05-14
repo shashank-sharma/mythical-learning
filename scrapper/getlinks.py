@@ -10,6 +10,7 @@ BeautifulSoup - To find meaningful data
 '''
 import requests
 from bs4 import BeautifulSoup
+from random import randint
 
 def codechef():
 
@@ -18,5 +19,8 @@ def codechef():
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, "html.parser")
 
-    links = soup.find_all('div', {'class': 'class': 'problemname'})
+    links = soup.find_all('div', {'class': 'problemname'})
+    rno = randint(0, len(links))
+    result = [links[rno].find_all('a')[0]['href'], links[rno].text]
 
+    return result
