@@ -4,4 +4,4 @@ from . import getlinks
 # Create your views here.
 
 def problem(request):
-    return render(request, 'scrapper/problem.html', {'content': getlinks.codechef()})
+    return render(request, 'scrapper/problem.html', {})

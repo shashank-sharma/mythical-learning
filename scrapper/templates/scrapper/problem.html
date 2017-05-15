@@ -1,5 +1,33 @@
-<h1>Hello, World!</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.get-link').click(function() {
+            $('#progress').css('display','block');
 
-{% for post in content %}
-<p>{{ post }}</p>
-{% endfor %}
+            $.ajax({
+                type: "GET",
+                url: "/ajax/getlink",
+                success: function(data) {
+                    console.log('Its working');
+                    for (i = 0; i < data.length; i++) {
+                        $('ul').append('<li>' + data[i] + '</li>');
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+<h1>Hello, World!</h1>
+<button class="get-link">Here</button>
+  <div class="progress" id = "progress" style = "display:none;">
+      <div class="indeterminate"></div>
+  </div>
+
+<ul>
+    <li>
+        <h2>Time to show</h2>
+    </li>
+</ul>
+
