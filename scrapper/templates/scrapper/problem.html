@@ -1,33 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.get-link').click(function() {
-            $('#progress').css('display','block');
-
-            $.ajax({
-                type: "GET",
-                url: "/ajax/getlink",
-                success: function(data) {
-                    console.log('Its working');
-                    for (i = 0; i < data.length; i++) {
-                        $('ul').append('<li>' + data[i] + '</li>');
-                    }
-                }
-            });
-        });
-    });
-
-</script>
-
+{% extends 'base.html' %} {% block pagecontent %}
 <h1>Hello, World!</h1>
-<button class="get-link">Here</button>
-  <div class="progress" id = "progress" style = "display:none;">
-      <div class="indeterminate"></div>
-  </div>
+<h2>Time to show</h2>
+<a class="waves-effect waves-light btn get-link">Get</a>
+<hr>
+<p id="problemq">This is your content</p>
 
-<ul>
-    <li>
-        <h2>Time to show</h2>
-    </li>
-</ul>
-
+{% endblock %}
