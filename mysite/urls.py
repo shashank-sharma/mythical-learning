@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from mysite.login import views as login_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ajax/', include('ajax.urls')),
     url(r'^problem/', include('scrapper.urls')),
+    url(r'^signup/$', login_views.signup, name='signup'),
     url(r'', include('home.urls')),
 ]
