@@ -11,6 +11,7 @@ from mysite.login.forms import SignUpForm
 from mysite.login.tokens import account_activation_token
 
 import smtplib
+import os
 
 @login_required
 def home(request):
