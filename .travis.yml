@@ -12,3 +12,4 @@ before_script:
   - mysql -e 'create database test;' -u root
 script:
   - python manage.py test
+after_success: coveralls
