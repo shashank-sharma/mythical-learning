@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'scrapper',
+    'mysite.login',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,14 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#----
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#----
 
 # Additional information
 DATABASES['default'] = dj_database_url.config()
