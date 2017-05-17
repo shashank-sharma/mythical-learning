@@ -10,6 +10,7 @@ from django.template.loader import render_to_string
 from mysite.login.forms import SignUpForm
 from mysite.login.tokens import account_activation_token
 
+import smtplib
 
 @login_required
 def home(request):
@@ -34,6 +35,16 @@ def signup(request):
             })
             user.email_user(subject, message)
 
+            # Sending email via Gmail
+
+            realMessage = 'Subject: {}\n\n{}'.format("Account Activation", message)
+
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.ehlo()
+            server.starttls()
+            server.login(os.environ['GMAIL_USERNAME'], os.environ["GMAIL_KEY"])
+            server.sendmail("Mythical-Learning", user.email, realMessage)
+            server.quit()
             return redirect('account_activation_sent')
     else:
         form = SignUpForm()
