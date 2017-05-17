@@ -1,14 +1,74 @@
 {% extends 'base.html' %}
-
+{% load static %}
 <html>
-{% block title %}Welcome Home {% endblock %}
+
+{% block title %}Welcome Home{% endblock %}
 
 <body>
+
+    {% block largepagecontent %}
+    <div class="row black" style="color: white">
+        <div class="container" style="padding-top: 50px;">
+            <div class="col s6 flow-text">
+                <b><p style="font-size: 42px;">Built to encourage reading</p></b>
+                <p style="font-size: 24px;">Mythical Learning provides a platform for developers to read source code according to their choice in quick and in efficient way. With our site anyone can learn, develop and its all free.</p>
+            </div>
+            <div class="col s6 flow-text hide-on-med-and-down left">
+                <center><p style="font-size: 32px;">Still Developing !</p></center>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+    <div class="container">
+      <div class="col s12 m6">
+        <img src="{% static '/img/extract.png' %}" width="100%" height="100%" />
+      </div>
+      <div class="col s12 m6 flow-text">
+      <b><p>Get best data</p></b>
+      <p style="font-size: 20px">With loads of data on various site we provide the best data on this platform according to your need. This include providing reliable source of information with links to justify that its true.</p>
+      <a href = "#">Learn more about this ></a>
+      </div>
+    </div>
+    </div>
+            <div class="container">
+    <br>
+    <br>
+    <hr><br><br>    
+    </div>
+<div class="row">
+        <div class="container">
+      <div class="col s12 m6 flow-text">
+      <b><p>Save time while reading</p></b>
+      <p style="font-size: 20px">On one click get all the data in front of you. For any problem get answer with click and interactive feature you can read the source code easily in your desire language.</p>
+      <a href = "#">Learn more about this ></a>
+      </div>
+      <div class="col s12 m6">
+      <img src="{% static '/img/time.png' %}" width="100%" height="100%" />
+      </div>
+    </div>
+    </div>
+            <div class="container">
+    <br>
+    <br>
+    <hr><br><br>    
+    </div>
+    <div class="row">
+    <center><p class="flow-text" style="font-size: 42px">Get data from famous sources</p></center>
+    <br><br>
+      <div class="row">
+    <div class="col s12 m6 l3"><p><img src="https://i.stack.imgur.com/MybMA.png" width="100%" height="100%" /></p></div>
+    <div class="col s12 m6 l3"><p><img src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/logo.png" width="100%" height="100%" /></p></div>
+    <div class="col s12 m6 l3"><p><img src="http://st.codeforces.com/s/10438/images/codeforces-logo-with-telegram.png" width="100%" height="100%" /></p></div>
+    <br>
+    <br>
+  </div>
+    </div>
+    {% endblock %} 
     {% block pagecontent %}
-    <h4>We are currently under Construction.<br> Come back after few more days</h4>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </p>
+    <center><a href="/signup" class="btn">Sign Up</a>
+    <br>
+    <br>
     {% endblock %}
 </body>
-
 </html>

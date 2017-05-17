@@ -17,6 +17,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
 
 </head>
 
@@ -27,17 +28,73 @@
     <nav>
         <div class="nav-wrapper green">
             <a class="brand-logo hide-on-med-and-down left">
-                <img src="{% static '/img/mythical-large.png' %}" height="12%" width="12%" style="padding:20px;" />
+                <img src="{% static '/img/mythical-large.png' %}" height="8%" width="8%" style="padding:4px;padding-left: 30px" />
             </a>
             <a class="brand-logo hide-on-large-only left">
-                <img src="{% static '/img/mythical-large.png' %}" height="80px" width="80px" />
+                <img src="{% static '/img/mythical-large.png' %}" height="50px" width="40px" style="padding-top:8px;"/>
             </a>
-            <div class="center" style="font-size: 200%;">Mythical Learning</div>
+            <ul>
+            </ul>
         </div>
     </nav>
+    {% block largepagecontent %} {% endblock %}
     <div class="container">
         {% block pagecontent %} {% endblock %}
     </div>
+            <footer class="page-footer green">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">About</h5>
+                <p class="grey-text text-lighten-4">This web app was successful with the help of Django 1.10.7 and Python 3. All logo/images were made in Inkscape.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">More Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="http://shashank-py.blogspot.in/">Blog</a></li>
+                  <li><a class="grey-text text-lighten-3" href="http://shashank-sharma.github.io">Github Blog</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://shashank-sharma.github.io/100-days-of-code/">100DaysOfCode Blog</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Made with Love by Shashank
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
 </body>
+<!--
 
+Hey, See this logo for nothing.
+
+                -+::sdmhysss+/::.                 
+            :`sNNhmMMMdNMMMmddddmNmy/`            
+         ``h+yMMMMMMMMNy:-.      `./ohh/          
+      ``+m:MhMMMMMMh+-`               `/s/        
+     `d:hMhMMMMMMy.                      :y.      
+    /-MmhMMMMMMN/                         .y      
+   `MhhMMMMMMMM:  .`                       -      
+  ssmMNMMMMMMMs o/.  +ossso:-.                    
+ `hMdNMMMMMMMM: /o`:./hmMMMNNy--:    .:/`-//-     
+ h+yNMMMMMMMMMo  -/:oooydMMMMNsy:` :omo/yms-``    
+:oddmMMMMMMMMMNoo` ..----mMMMMNysyhNNoyNdssss+:-  
+:ydmNMMMMMMMMMMMMmddhhdmmMMMMMMMMMMMNNMMdo-.`..`  
+ -oydNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMhooydmmmds.
+.oddmddddmMMMMMMMMMMMMMMMMMMMMNMMMMMMMMMMMMMmdyo: 
+   ``-+yNMMMMMMMMdyhhMMMMMMNds-sNMMMMMMMMMMMmdhhh+
+  `:/+oooNMmNMNydmdNMMMMMmo-`   -dmMMMMMMMMMmhhh+-
+     `/hmdodms+yMMMMMMMMMy` `.   :-hMMMMMMMMNNh/s`
+     -/:. /:`-dMMMMMMMMMMd+/hNs`   -MMMMMMMMNhMm  
+      `      +yMMMMMMMMMMNyh+ddoh/ /MMMMMMMMMNo+  
+      y       ymNMMMMMNdNo`  y/`h/.mMMMMMMMmyN.   
+      N-     .o.mhoMMMd//`  `:  `-dMMMMMMhdM:/    
+      -y/`    ` yy sNmhdmhso++++hNMMMMMdMd-d`     
+        /ho-    `o  `::..----+hMMMMMMhM+d+ `      
+          :yds/.       `-/sdMMMMMMMMdoh``         
+            `/sdmdddmmNMMMNmNMMmdMMs`.            
+                 `-:/+shddmmyo-:/:`               
+-->
 </html>
