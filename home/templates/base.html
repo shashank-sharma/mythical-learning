@@ -33,14 +33,20 @@
             <a class="brand-logo hide-on-large-only left">
                 <img src="{% static '/img/mythical-large.png' %}" height="50px" width="40px" style="padding-top:8px;"/>
             </a>
-            <ul>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/login">Log In</a></li>
             </ul>
         </div>
     </nav>
     {% block largepagecontent %} {% endblock %}
-    <div class="container">
+    <div class="container" style="padding-bottom:40px; ">
         {% block pagecontent %} {% endblock %}
+
     </div>
+    <br><br><br><br><br><br>
             <footer class="page-footer green">
           <div class="container">
             <div class="row">

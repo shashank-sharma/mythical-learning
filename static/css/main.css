@@ -1,42 +1,8 @@
-.type{
-  color: lime; 
-  filter: blur(1px);
-  font-family: "Courier";
-  font-size: 20px;
-  margin: 10px 0 0 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 30em;
-  animation: type 4s steps(60, end); 
-}
-
-.type:nth-child(2){
-  animation: type2 8s steps(60, end);
-}
-
-.type a{
-  color: lime;
-  text-decoration: none;
-}
-
-span{
-  animation: blink 1s infinite;
-}
-
-@keyframes type{ 
-  from { width: 0; } 
-} 
-
-@keyframes type2{
-  0%{width: 0;}
-  50%{width: 0;}
-  100%{ width: 100; } 
-} 
-
-@keyframes blink{
-  to{opacity: .0;}
-}
-
-::selection{
-  background: black;
-}
+body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+ }
+main {
+     flex: 1 0 auto;
+ }

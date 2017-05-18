@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block pagecontent %}
-  <h2>Log in to My Site</h2>
+<div class="row">
+<div class="col s12 m4">
+</div>
+<div class="center col s12 m4">
+  <p class="flow-text" style="font-size: 40px">Log in</p>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
@@ -20,7 +24,18 @@
         {% endif %}
       </p>
     {% endfor %}
-    <button type="submit">Log in</button>
-    <a href="{% url 'signup' %}">New to My Site? Sign up</a>
+    <button type="submit" class="btn">Log in</button>
+    <br><br>
+    <a href="{% url 'signup' %}">New Here? Sign up</a>
+    <br>
+    <a href="{% url 'password_reset' %}">Forgot Password ?</a>
   </form>
+  <br><br>
+  <div style="color: grey;">
+  <a href = "/faq/security" style="color: grey;" >Security</a>
+  |
+  <a href = "/faq/contact" style="color: grey;">Contact</a>
+  </div>
+  </div>
+  </div>
 {% endblock %}

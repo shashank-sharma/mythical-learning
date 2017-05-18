@@ -36,7 +36,8 @@ def signup(request):
             })
             user.email_user(subject, message)
 
-            # Sending email via Gmail
+            '''
+            Sending email via Gmail
 
             realMessage = 'Subject: {}\n\n{}'.format("Account Activation", message)
 
@@ -46,6 +47,7 @@ def signup(request):
             server.login(os.environ['GMAIL_USERNAME'], os.environ["GMAIL_KEY"])
             server.sendmail("Mythical-Learning", user.email, realMessage)
             server.quit()
+            '''
             return redirect('account_activation_sent')
     else:
         form = SignUpForm()
