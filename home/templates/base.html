@@ -27,6 +27,9 @@
   </div>
     <nav>
         <div class="nav-wrapper green">
+        <div class="progress" id="load">
+      <div class="indeterminate"></div>
+  </div>
             <a class="brand-logo hide-on-med-and-down left">
                 <img src="{% static '/img/mythical-large.png' %}" height="8%" width="8%" style="padding:4px;padding-left: 30px" />
             </a>
@@ -71,6 +74,22 @@
             </div>
           </div>
         </footer>
+
+<script>
+document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.getElementById('contents').style.visibility="hidden";
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },1000);
+  }
+}
+
+</script>
 </body>
 <!--
 
