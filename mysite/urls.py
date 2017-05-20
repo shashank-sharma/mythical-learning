@@ -17,6 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from mysite.login import views as login_views
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+def handler404(request):
+    response = render_to_response('404.html', {},context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,7 +38,7 @@ urlpatterns = [
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
     url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-                auth_views.password_reset_confirm, name='password_reset_confirm'),
+        auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
     #url(r'^$', login_views.home, name='home'),
     url(r'dashboard/', login_views.home, name='home'),
