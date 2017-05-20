@@ -10,3 +10,6 @@ def about(request):
 
 def faq(request):
     return render(request, 'faq.html', {})
+
+def view404(request):
+    return render(request, '404.html', {})

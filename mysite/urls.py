@@ -17,13 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from mysite.login import views as login_views
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.conf.urls import handler404
 
-def handler404(request):
-    response = render_to_response('404.html', {},context_instance=RequestContext(request))
-    response.status_code = 404
-    return response
+handler404 = 'home.views.view404'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
