@@ -1,8 +1,16 @@
 {% extends 'base.html' %} {% block pagecontent %}
-<h1>Hello, World!</h1>
-<h2>Time to show</h2>
+<!-- Button to get links from other server. Class - get-link which makes ajax call -->
+<p class="flow-text" style="font-size: 42px;">Problems</p>
 <a class="waves-effect waves-light btn get-link">Get</a>
 <hr>
-<p id="problemq">This is your content</p>
-
+<p id="problemq"><h3 class="flow-text">Get your first question ...</h3></p>
+<p id="problemlink"></p>
+<div id="problema" style="display: none;">
+<p class="flow-text" style="font-size: 42px;">Answers</p>
+<hr class="container">
+<br>
+<a class="waves-effect waves-light btn get-answer">Get</a>
+  <ul class="collapsible popout" data-collapsible="accordion" id = "problemanswer">
+  </ul>
+  </div>
 {% endblock %}

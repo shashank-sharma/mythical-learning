@@ -12,3 +12,14 @@ def getlink(request):
         return HttpResponse(data, content_type = "application/json")
     else:
         raise Http404
+
+def getanswer(request):
+    u = request.GET['link']
+    if request.is_ajax():
+        a = getlinks.codechefAnswers(u)
+        print('\n\n\n')
+        print(a)
+        print('\n\n\n')
+        data = json.dumps(a)
+        print(data)
+        return HttpResponse(data, content_type = "application/json")
