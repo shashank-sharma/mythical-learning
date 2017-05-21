@@ -11,5 +11,11 @@ def about(request):
 def faq(request):
     return render(request, 'faq.html', {})
 
+def fsecurity(request):
+    return render(request, 'fsecurity.html', {})
+
+def fcontact(request):
+    return render(request, 'fcontact.html', {})
+
 def view404(request):
     return render(request, '404.html', {})

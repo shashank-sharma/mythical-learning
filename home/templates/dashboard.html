@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block pagecontent %}
+	{% if user.is_authenticated %}
+		<p class="flow-text" style="font-size: 42px;">Dashboard <a href = "settings/"><i class="material-icons">mode_edit</i></a></p>
+		<div class="row flow-text">
+			<p>Username: {{ user.username }}</p>
+			{% if user.get_full_name %}
+				<p>Name: {{ user.get_full_name }}</p>
+			{% else %}
+				Name: <a href="settings/">Edit</a>
+			{% endif %}
+			<p>Email: {{ user.email }}</p>
+			<p>Biography: {{ user.bio }}</p>
+		</div>
+	{% else %}
+		<p>Please login to see this page.</p>
+   	{% endif %}
+{% endblock %}

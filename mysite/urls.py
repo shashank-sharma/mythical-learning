@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ajax/', include('ajax.urls')),
     url(r'^problem/', include('scrapper.urls')),
+    url(r'settings/', login_views.update_profile, name='update_profile'),
+    url(r'^dashboard/', login_views.dashboard, name='dashboard'),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^signup/$', login_views.signup, name='signup'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),

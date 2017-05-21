@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% block pagecontent %}
+
+<p class="flow-text" style="font-size: 42px;">Settings</p>
+<form method="post">
+  {% csrf_token %} 
+  			<label for="textarea1">Username</label>
+            <input disabled {{ signup_form.username }}
+            <label for="textarea1">Email</label>
+            <input disabled {{ signup_form.email }}
+            <i class="material-icons">info</i>Email will not be changed. Contact admin for more support.<br>
+            <label for="textarea1">First Name</label>
+            {{ user_form.first_name }}
+            <label for="textarea1">Last Name</label>
+            {{ user_form.last_name }}
+    <label for="textarea1">Biography</label>
+    {{ profile_form.bio }}
+  <button type="submit" class="btn">Save changes</button>
+</form>
+{% endblock %}
