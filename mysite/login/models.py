@@ -14,6 +14,13 @@ class Profile(models.Model):
     email_confirmed = models.BooleanField(default=False)
 
 
+class Answers(models.Model):
+    user = models.ForeignKey(User)
+    answer = models.TextField(max_length=1000, blank = True)
+
+    def __str__(self):
+        return self.answer
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:

@@ -17,6 +17,8 @@
                 }
             });
         });
+
+
         $('.get-answer').click(function() {
             $('#progress').css('display','block');
             var geturl = $("#problemlink").text();
@@ -37,5 +39,16 @@
                     $('#progress').css('display', 'none');
                 }
             });
+        });
+
+        $('.save-answer').click(function(){
+            $('#save').css('display', 'block');
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saveanswer?"
+
+            });
+
         });
     });

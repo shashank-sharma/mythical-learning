@@ -10,9 +10,11 @@ from django.db import transaction
 
 from mysite.login.forms import SignUpForm, UserForm, ProfileForm
 from mysite.login.tokens import account_activation_token
+from mysite.login.models import Answers
 
 import smtplib
 import os
+from django.contrib.auth.models import User
 
 @login_required
 def home(request):
@@ -21,6 +23,12 @@ def home(request):
 @login_required
 def dashboard(request):
     return render(request, 'dashboard.html', {})
+
+@login_required
+def answersview(request):
+    answers = Answers.objects.filter(user=request.user)
+    print(answers)
+    return render(request, 'answers.html', {'answers': answers})
 
 def signup(request):
     if request.method == 'POST':

@@ -1,6 +1,31 @@
 {% extends 'base.html' %} {% block pagecontent %}
 <!-- Button to get links from other server. Class - get-link which makes ajax call -->
 <p class="flow-text" style="font-size: 42px;">Problems</p>
+
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+      	<span class="new badge red" data-badge-caption="">
+      		Saved
+      	</span>
+      	<i class="material-icons">
+      		filter_drama
+      	</i>
+      	First
+      </div>
+            <div class="progress" id="save" style="width: 100%;">
+      <div class="indeterminate"></div>
+  </div>
+    <div class="collapsible-body">
+    	<a class="btn-floating right green save-answer">
+    		<i class="material-icons">add</i>
+    	</a>
+    	<span>Lorem ipsum dolor sit amet.</span>
+    </div>
+    </li>
+  </ul>
+
+
 <a class="waves-effect waves-light btn get-link">Get</a>
 <hr>
 <p id="problemq"><h3 class="flow-text">Get your first question ...</h3></p>

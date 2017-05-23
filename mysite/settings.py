@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'scrapper',
     'mysite.login',
+    'ajax',
 ]
 
 MIDDLEWARE = [
