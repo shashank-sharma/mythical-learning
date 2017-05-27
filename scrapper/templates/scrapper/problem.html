@@ -1,34 +1,37 @@
 {% extends 'base.html' %} {% block pagecontent %}
 <!-- Button to get links from other server. Class - get-link which makes ajax call -->
+<div class="row">
+<div class="s6 m12 l6">
 <p class="flow-text" style="font-size: 42px;">Problems</p>
+</div>
+<div class="s6 m12 l6 right">
+<a class="{{ c }} tooltipped" id="save-lang1" data-position="top" data-delay="50" data-tooltip="C Language"><i class="material-icons">code</i></a>
+<a class="{{ cpp }} tooltipped" id="save-lang2" data-position="top" data-delay="50" data-tooltip="C++ Language"><i class="material-icons">code</i></a>
+<a class="{{ java }} tooltipped" id="save-lang3" data-position="top" data-delay="50" data-tooltip="Java Language"><i class="material-icons">code</i></a>
+<a class="{{ python }} tooltipped" id="save-lang4" data-position="top" data-delay="50" data-tooltip="Python Language"><i class="material-icons">code</i></a>
+<br>
+<a href = "#" id="targe"><p class="right flow-text" style="font-size: 14px;">help?</p></a>
 
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header">
-      	<span class="new badge red" data-badge-caption="">
-      		Saved
-      	</span>
-      	<i class="material-icons">
-      		filter_drama
-      	</i>
-      	First
-      </div>
-            <div class="progress" id="save" style="width: 100%;">
-      <div class="indeterminate"></div>
-  </div>
-    <div class="collapsible-body">
-    	<a class="btn-floating right green save-answer">
-    		<i class="material-icons">add</i>
-    	</a>
-    	<span>Lorem ipsum dolor sit amet.</span>
+  <div class="tap-target flow-text blue" data-activates="save-lang1">
+    <div class="tap-target-content center">
+      <p style="font-size: 42px;">Language</p>
+      <p>These buttons helps you to choose the desire language in which you want your source code.</p>
+      <p>With this button you will get the answer in that particular language only.</p>
+      <p><b>Hover to get language detail</b></p>
+      <a href="#" class="btn red">Close</a>
     </div>
-    </li>
-  </ul>
+  </div>
+
+
+
+
+</div>
+</div>
 
 
 <a class="waves-effect waves-light btn get-link">Get</a>
 <hr>
-<p id="problemq"><h3 class="flow-text">Get your first question ...</h3></p>
+<p id="problemq" style="font-size: 12px;"><h3 class="flow-text">Get your first question ...</h3></p>
 <p id="problemlink"></p>
 <div id="problema" style="display: none;">
 <p class="flow-text" style="font-size: 42px;">Answers</p>

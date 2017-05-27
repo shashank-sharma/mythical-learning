@@ -10,7 +10,7 @@ from django.db import transaction
 
 from mysite.login.forms import SignUpForm, UserForm, ProfileForm
 from mysite.login.tokens import account_activation_token
-from mysite.login.models import Answers
+from mysite.login.models import Answers, Language
 
 import smtplib
 import os
@@ -26,9 +26,15 @@ def dashboard(request):
 
 @login_required
 def answersview(request):
+    #q = Answers(user = request.user, answer = 'TESTING')
+    #q.save()
     answers = Answers.objects.filter(user=request.user)
-    print(answers)
-    return render(request, 'answers.html', {'answers': answers})
+    language = Language.objects.filter(user=request.user)
+    if not language:
+        language = "It is empty"
+    else:
+        language = language.values('lang')[0]['lang']
+    return render(request, 'answers.html', {'answers': answers, 'language': language})
 
 def signup(request):
     if request.method == 'POST':

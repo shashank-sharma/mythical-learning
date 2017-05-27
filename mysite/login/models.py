@@ -21,6 +21,10 @@ class Answers(models.Model):
     def __str__(self):
         return self.answer
 
+class Language(models.Model):
+    user = models.ForeignKey(User)
+    lang = models.TextField(max_length=20, blank = True)
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
