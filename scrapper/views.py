@@ -18,7 +18,7 @@ def problem(request):
         c += ' pulse'
         cpp += ' pulse'
         java += ' pulse'
-        python = ' pulse'
+        python += ' pulse'
     else:
         language = language.values('lang')[0]['lang']
         if language == ' C':

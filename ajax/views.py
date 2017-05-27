@@ -35,6 +35,7 @@ def savelang1(request):
         if not q:
             print(1)
             q = Language(user = request.user, lang = ' C')
+            q.save()
         else:
             print(2)
             Language.objects.filter(user = request.user).update(lang = ' C')
@@ -47,6 +48,7 @@ def savelang2(request):
         q = Language.objects.filter(user = request.user)
         if not q:
             q = Language(user = request.user, lang = " C++14")
+            q.save()
         else:
             Language.objects.filter(user = request.user).update(lang = " C++14")
         a = 'success'
@@ -58,6 +60,7 @@ def savelang3(request):
         q = Language.objects.filter(user = request.user)
         if not q:
             q = Language(user = request.user, lang = " JAVA")
+            q.save()
         else:
             Language.objects.filter(user = request.user).update(lang = " JAVA")
         a = 'success'
@@ -69,6 +72,7 @@ def savelang4(request):
         q = Language.objects.filter(user = request.user)
         if not q:
             q = Language(user = request.user, lang = " PYTH")
+            q.save()
         else:
             Language.objects.filter(user = request.user).update(lang = " PYTH")
         a = 'success'
