@@ -23,6 +23,23 @@
 </head>
 
 <body>
+
+<ul id="slide-out" class="side-nav">
+    <li><a class="waves-effect" href="/">Home</a></li>
+    <li><a class="waves-effect" href="/about">About</a></li>
+    <li><a class="waves-effect" href="/faq">FAQ</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Account</a></li>
+    {% if user.is_authenticated %}
+    <li><a class="waves-effect" href="/problem">Problems</a></li>
+    <li><a class="waves-effect" href="/dashboard">Profile</a></li>
+    <li><a class="waves-effect" href="/settings">Settings</a></li>
+    <li><a class="waves-effect" href="/logout">Log out</a></li>
+    {% else %}
+    <li><a class="waves-effect" href="/login">Login</a></li>
+    {% endif %}
+  </ul>
+
 <div class="progress" id = "progress" style="position: relative;display: none;">
       <div class="indeterminate"></div>
   </div>
@@ -34,14 +51,15 @@
             <a class="brand-logo hide-on-med-and-down left">
                 <img src="{% static '/img/mythical-large.png' %}" height="8%" width="8%" style="padding:4px;padding-left: 30px" />
             </a>
-            <a class="brand-logo hide-on-large-only left">
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons">menu</i></a>
+            <a class="brand-logo hide-on-large-only right">
                 <img src="{% static '/img/mythical-large.png' %}" height="50px" width="40px" style="padding-top:8px;"/>
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
             {% if user.is_authenticated %}
+            <li><a href="/problem">Problem</a></li>
             <li class="right"><a href = "" data-activates='dropdown0' class='dropdown-button'><i class="large material-icons">perm_identity</i></a></li>
               <ul id='dropdown0' class='dropdown-content white'>
                 <li><a href="/dashboard">Profile</a></li>
@@ -112,6 +130,13 @@ document.onreadystatechange = function () {
     );
       $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
+      $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
   });
 </script>
 </body>

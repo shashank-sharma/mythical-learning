@@ -27,6 +27,10 @@ def getanswer(request):
         print(data)
         return HttpResponse(data, content_type = "application/json")
 
+def saveanswer(request):
+    if request.is_ajax():
+        pass
+
 def savelang1(request):
     if request.is_ajax():
         # Update language

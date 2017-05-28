@@ -34,7 +34,7 @@
                     else
                     {
                     var kls = data[0].slice(38, data[0].length);
-                    $("#problemanswer").append('<li><div class="collapsible-header"><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body '+ kls +'"><h3>Solution:</h3></div>');
+                    $("#problemanswer").append('<li><div class="collapsible-header"><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body '+ kls +'"><h3>Solution:<a class="btn-floating right green save-answer"><i class="material-icons">add</i></a></h3></div>');
                     var str;
                     for (i = 1; i < data.length; i++) {
                         str = data[i].replace('\t', '    ');
