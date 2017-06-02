@@ -17,9 +17,9 @@ class Profile(models.Model):
 # To save Answers from problems
 class Answers(models.Model):
     user = models.ForeignKey(User)
-    question = models.TextField(max_length=1000, blank = True)
+    question = models.TextField(max_length=100, blank = True)
     lang = models.TextField(max_length = 20, blank = True)
-    answer = models.TextField(max_length = 1000, blank = True)
+    answer = models.TextField(max_length = 100, blank = True)
     track = models.TextField(max_length = 20, blank = True)
 
     def __str__(self):

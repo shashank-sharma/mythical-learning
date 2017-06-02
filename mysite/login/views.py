@@ -29,6 +29,12 @@ def answersview(request):
     #q = Answers(user = request.user, answer = 'TESTING')
     #q.save()
     answers = Answers.objects.filter(user=request.user)
+    answers = answers.values()
+    answers = list(answers)
+    a = []
+    for i in answers:
+        a.append(i.values())
+    answers = a
     language = Language.objects.filter(user=request.user)
     if not language:
         language = "It is empty"

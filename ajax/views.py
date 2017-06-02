@@ -2,10 +2,14 @@ from django.shortcuts import render
 import json
 from django.http import Http404, HttpResponse
 from . import getlinks
-from mysite.login.models import Language
+from mysite.login.models import Language, Answers
 
 # Create your views here.
 
+'''
+ Get link calls getlinks function from another file which get question id
+ From json file and then scrape the given page to provide question details
+'''
 def getlink(request):
     if request.is_ajax():
         a = getlinks.codechef()
@@ -14,6 +18,13 @@ def getlink(request):
     else:
         raise Http404
 
+'''
+ Get answer accept one paramter through link which is question link.
+ Question link is used to get the ID of that question and later
+ checked in database to get all possible answer related to that id
+ After matching it scrape the answer page and return it here
+
+'''
 def getanswer(request):
     u = request.GET['link']
     if request.is_ajax():
@@ -28,9 +39,39 @@ def getanswer(request):
         return HttpResponse(data, content_type = "application/json")
 
 def saveanswer(request):
+    u = request.GET['code']
+    print(u)
+    v = request.GET['url']
+    print(v)
     if request.is_ajax():
-        pass
+        language = Language.objects.filter(user = request.user)
+        if not language:
+            language = " C"
+        else:
+            language = language.values('lang')[0]['lang']
+        ans = Answers.objects.filter(user = request.user, answer = u)
+        if ans:
+            a = 'no'
+        else:
+            answer = Answers(user = request.user,
+                        question = v,
+                        lang = language,
+                        answer = u,
+                        track = "-")
+            answer.save()
+            a = "success"
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
 
+'''
+ Here save lang is used to save the current language session of that particular
+ User permanently. It updates given mode again and again
+
+#################################################################
+
+This can be formated easy by creating one common function and rest other to
+link them by it to avoid typing same thing twice
+'''
 def savelang1(request):
     if request.is_ajax():
         # Update language

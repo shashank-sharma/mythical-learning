@@ -20,7 +20,7 @@
 
 
         $('.get-answer').click(function() {
-            $('#progress').css('display','block');
+            $('.loadd').css('display','block');
             var geturl = $("#problemlink").text();
 
             $.ajax({
@@ -34,7 +34,7 @@
                     else
                     {
                     var kls = data[0].slice(38, data[0].length);
-                    $("#problemanswer").append('<li><div class="collapsible-header"><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body '+ kls +'"><h3>Solution:<a class="btn-floating right green save-answer"><i class="material-icons">add</i></a></h3></div>');
+                    $("#problemanswer").append('<li><div class="collapsible-header"><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body code '+ kls +'"><h3>Solution:</h3><a class = "btn-floating btn waves-effect waves-light right green save-answer" data-code = "'+ kls +'"><i class="material-icons">add</i></a></div>');
                     var str;
                     for (i = 1; i < data.length; i++) {
                         str = data[i].replace('\t', '    ');
@@ -43,6 +43,30 @@
                     }
                     $("."+kls).append('<a href = "'+data[0]+'">'+data[0]+'</a>')
                 }
+                    $('.loadd').css('display', 'none');
+                }
+            });
+        });
+
+// Save answer
+
+        $('#problemanswer').on( 'click', '.save-answer', function() {
+            $('#progress').css('display','block');
+            var code = $(this).attr("data-code");
+            var geturl = $("#problemlink").text();
+            console.log(code);
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saveanswer?code="+code+"&url="+geturl,
+                success: function(data) {
+                    if(data == 'no')
+                    {
+                        Materialize.toast('Already saved', 4000);
+                    }
+                    else
+                    {
+                        console.log('Saved');
+                    }
                     $('#progress').css('display', 'none');
                 }
             });
