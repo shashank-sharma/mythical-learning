@@ -13,6 +13,7 @@ import re
 from bs4 import BeautifulSoup
 from random import randint
 import json
+from urllib.request import urlopen
 
 def codechef():
 
@@ -69,7 +70,7 @@ def codechefAnswers(url, language):
         if code == i['code']:
             ourData = i
             break
-    
+
     rno = randint(0, len(ourData['answer'][TAGS[language]]))
     try:
         tag = ourData['answer'][TAGS[language]][rno]
@@ -90,3 +91,5 @@ def codechefAnswers(url, language):
     aa.insert(0, URL + '/viewsolution/' + tag)
     return aa
 
+def ynews():
+    pass

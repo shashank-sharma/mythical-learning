@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block largepagecontent %}
+<div class="row" style="background-image: url({% static '/img/temple.png' %}); height: 940px; width: 100%;">
+<div class="flow-text" style="float: right; padding-right: 30px;font-size: 16px;">
+<p>Updates:</p>
+<p>
+	<ol>
+	<li>Problem page added</li>
+	<li>Temple page created</li>
+	</ol>
+</p>
+</div>
+<div class="container" style="color: white;">
+<h1>Mythical Temple</h1>
+<p class="flow-text">Welcome Mythical Beast, This place is where you train your mind and get familiar with loads of ancient data available on the internet.</p>
+<p class="flow-text">Feel free to move around</p>
+<a href="/temple/problem" class="btn">Problems</a>
+<br><br><br>
+<a href="/temple/blog" class="btn">Blogs</a>
+</div>
+{% endblock %}
+{% block pagecontent %}
+{% endblock %}

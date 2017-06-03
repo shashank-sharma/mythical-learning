@@ -31,7 +31,7 @@
     <li><div class="divider"></div></li>
     <li><a class="subheader">Account</a></li>
     {% if user.is_authenticated %}
-    <li><a class="waves-effect" href="/problem">Problems</a></li>
+    <li><a class="waves-effect" href="/temple">Temple</a></li>
     <li><a class="waves-effect" href="/dashboard">Profile</a></li>
     <li><a class="waves-effect" href="/settings">Settings</a></li>
     <li><a class="waves-effect" href="/logout">Log out</a></li>
@@ -59,7 +59,7 @@
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
             {% if user.is_authenticated %}
-            <li><a href="/problem">Problem</a></li>
+            <li><a href="/temple">Temple</a></li>
             <li class="right"><a href = "" data-activates='dropdown0' class='dropdown-button'><i class="large material-icons">perm_identity</i></a></li>
               <ul id='dropdown0' class='dropdown-content white'>
                 <li><a href="/dashboard">Profile</a></li>

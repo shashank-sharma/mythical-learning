@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block pagecontent %}
 <p class="flow-text">Answers</p>
 <hr>
-{% for id, language, answer, t, question, s in answers %}
+{% for language, answer, question in answers %}
 <p>Language: {{ language }}</p>
 <p>Answer: {{ answer }}</p>
 <p>Question: {{ question }}

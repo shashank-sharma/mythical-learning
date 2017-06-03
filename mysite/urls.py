@@ -24,7 +24,7 @@ handler404 = 'home.views.view404'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ajax/', include('ajax.urls')),
-    url(r'^problem/', include('scrapper.urls')),
+    url(r'^temple/', include('scrapper.urls')),
     url(r'settings/', login_views.update_profile, name='update_profile'),
     url(r'^dashboard/', login_views.dashboard, name='dashboard'),
     url(r'^answers/', login_views.answersview, name='answersview'),

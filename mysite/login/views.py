@@ -31,9 +31,14 @@ def answersview(request):
     answers = Answers.objects.filter(user=request.user)
     answers = answers.values()
     answers = list(answers)
+    print(answers)
     a = []
     for i in answers:
-        a.append(i.values())
+        b = []
+        b.append(i['lang'])
+        b.append(i['answer'])
+        b.append(i['question'])
+        a.append(b)
     answers = a
     language = Language.objects.filter(user=request.user)
     if not language:

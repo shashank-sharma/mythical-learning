@@ -5,6 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+def temple(request):
+    return render(request, 'scrapper/temple.html', {})
+
+def blog(request):
+    return render(request, 'scrapper/blog.html', {})
+
 @login_required
 def problem(request):
     language = Language.objects.filter(user = request.user)
