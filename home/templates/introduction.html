@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block largepagecontent %}
+<br><br>
+<center>
+<div class="card white z-depth-5" style="width: 90%; padding: 40px;text-align: left;">
+<p class="flow-text center" style="font-size: 42px;">Welcome to Mythical Learning
+<br>
+<img src="{% static '/img/mythical-large.png' %}" class = "center" height="8%" width="8%"/></p>
+
+<p class="flow-text">Mythical learning provides a platform for you developers to get some unknown knowldge at one place. We here encourage you to read and give you all the information required.</p>
+<p class="flow-text">To get started just go to the temple and then learn over there :D</p>
+<a href = "/temple" class="btn">Temple</a>
+</div>
+</center>
+
+{% endblock %}
+{% block pagecontent %}
+{% endblock %}
