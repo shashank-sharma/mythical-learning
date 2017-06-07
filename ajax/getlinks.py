@@ -91,5 +91,28 @@ def codechefAnswers(url, language):
     aa.insert(0, URL + '/viewsolution/' + tag)
     return aa
 
+'''
+#######################################################################
+
+Ynews functions
+
+https://hacker-news.firebaseio.com/v0/ ...
+
+Top stories  - topstories.json?print=pretty
+New stories  - newstories.json
+Best stories - beststories.json
+
+Get story   - item/<id>.json
+
+
+#######################################################################
+'''
+
+def getJson(link):
+    response = urlopen(link).read().decode("utf-8")
+    obj = json.loads(response)
+    return obj
+
 def ynews():
-    pass
+    data = getJson("https://hacker-news.firebaseio.com/v0/bests")
+
