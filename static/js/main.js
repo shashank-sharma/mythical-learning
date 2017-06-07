@@ -48,6 +48,72 @@
             });
         });
 
+// Get Blog title and links
+/*
+  <div id="modal1" class="modal modal-fixed-footer" style="width: 85%; height: 95%;max-height: 95%;">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <iframe data-src="https://www.w3schools.com" src = "about:blank" style="width: 100%; height: 100%;padding: 0px;" id="asd"></iframe>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+  </div>
+*/
+        $('.get-blog').click(function() {
+            console.log('GE');
+            $('#progress').css('display','block');
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/getblog",
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        //$('ul').append('<li>' + data[i] + '</li>');
+                        $('#blogshow').append('<div class="col s12 '+ data[i][3] +'" style = "color: white;">'+
+                            '<div class="card horizontal black">'+
+                            '<div class="card-image red center" style="padding: 20px;">'+
+                            data[i][1]+'</div>'+
+                            '<div class="card-stacked">'+
+                            '<div class="card-content flow-text">'+
+                            '<a href = "javascript:void(0);" class="right delete" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">delete</i></a>'+
+                            '<a href="#modal1" class="modal-trigger right view-blog" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">launch</i></a>'+
+                            '<a href="javascript:void(0);" class="right" style="color: white"><i class="material-icons">note_add</i></a>'+
+                            '<p>'+data[i][0]+'</p>'+
+                            '</div>'+
+                            '<div class="card-action">'+
+                            '<a href = "'+data[i][2]+'" class = "'+ data[i][3] +'">Link</a>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>');
+                    }
+                    $('#progress').css('display', 'none');
+                }
+            });
+        });
+
+        $('#blogshow').on( 'click', '.view-blog', function() {
+            var id = $(this).attr('id');
+            var code = $("a."+id).attr("href");
+
+            $("#asd").attr("data-src", code);
+            console.log(code);
+            var iframe = $("#asd");
+            iframe.attr("src", code);
+            //iframe.attr("src", iframe.data("src")); 
+        });
+
+
+        $('#blogshow').on( 'click', '.delete', function() {
+            var id = $(this).attr('id');
+            console.log('Deleting');
+
+            $('div.'+id).hide(1000);
+
+        });
+
+
 // Save answer
 
         $('#problemanswer').on( 'click', '.save-answer', function() {

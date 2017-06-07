@@ -38,6 +38,14 @@ def getanswer(request):
         print(data)
         return HttpResponse(data, content_type = "application/json")
 
+def getblog(request):
+    if request.is_ajax():
+        a = getlinks.ynews()
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+    else:
+        raise Http404
+
 def saveanswer(request):
     u = request.GET['code']
     print(u)

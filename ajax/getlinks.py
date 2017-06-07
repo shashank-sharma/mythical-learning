@@ -114,5 +114,20 @@ def getJson(link):
     return obj
 
 def ynews():
-    data = getJson("https://hacker-news.firebaseio.com/v0/bests")
-
+    data = getJson("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
+    count = 0
+    stories = []
+    for i in data:
+        temp = []
+        print('Working on ['+str(i)+']')
+        story = getJson("https://hacker-news.firebaseio.com/v0/item/"+str(i)+'.json?print=pretty')
+        temp.append(story['title'])
+        temp.append(story['score'])
+        temp.append(story['url'])
+        temp.append(story['id'])
+        print(temp)
+        stories.append(temp)
+        count+=1
+        if count > 6:
+            break
+    return stories
