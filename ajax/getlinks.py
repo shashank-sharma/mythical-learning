@@ -119,15 +119,19 @@ def ynews():
     stories = []
     for i in data:
         temp = []
-        print('Working on ['+str(i)+']')
-        story = getJson("https://hacker-news.firebaseio.com/v0/item/"+str(i)+'.json?print=pretty')
-        temp.append(story['title'])
-        temp.append(story['score'])
-        temp.append(story['url'])
-        temp.append(story['id'])
+        rno = randint(0, len(data))
+        print('Working on ['+str(data[rno])+']')
+        story = getJson("https://hacker-news.firebaseio.com/v0/item/"+str(data[rno])+'.json?print=pretty')
+        try:
+            temp.append(story['title'])
+            temp.append(story['score'])
+            temp.append(story['url'])
+            temp.append(story['id'])
+        except:
+            continue
         print(temp)
         stories.append(temp)
         count+=1
-        if count > 6:
+        if count > 0:
             break
     return stories

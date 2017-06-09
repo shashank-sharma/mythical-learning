@@ -60,17 +60,23 @@
     </div>
   </div>
 */
-        $('.get-blog').click(function() {
-            console.log('GE');
-            $('#progress').css('display','block');
+$('.refresh').click(function(){
+    $(".blog-content").fadeOut(1000);
+});
 
+        $('.get-blog').click(function() {
+            console.log('GET');
+            $('#progress').css('display','block');
+            for (j=0; j<5; j++)
+            {
+            console.log(j);
             $.ajax({
                 type: "GET",
                 url: "/ajax/getblog",
                 success: function(data) {
                     for (i = 0; i < data.length; i++) {
                         //$('ul').append('<li>' + data[i] + '</li>');
-                        $('#blogshow').append('<div class="col s12 '+ data[i][3] +'" style = "color: white;">'+
+                        $('#blogshow').append('<div class="col s12 blog-content '+ data[i][3] +'" style = "color: white;display: none;">'+
                             '<div class="card horizontal black">'+
                             '<div class="card-image red center" style="padding: 20px;">'+
                             data[i][1]+'</div>'+
@@ -87,10 +93,12 @@
                             '</div>'+
                             '</div>'+
                             '</div>');
+                        $("."+data[i][3]).fadeIn();
                     }
                     $('#progress').css('display', 'none');
                 }
             });
+        }
         });
 
         $('#blogshow').on( 'click', '.view-blog', function() {
