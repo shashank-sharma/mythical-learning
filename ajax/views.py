@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from django.http import Http404, HttpResponse
 from . import getlinks
-from mysite.login.models import Language, Answers
+from mysite.login.models import Language, Answers, Blogs
 
 # Create your views here.
 
@@ -69,6 +69,37 @@ def saveanswer(request):
             answer.save()
             a = "success"
         data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+
+def saveblog(request):
+    if request.is_ajax():
+        getTitle = request.GET['title']
+        getScore = request.GET['score']
+        getUrl = request.GET['url']
+        getId = request.GET['id']
+
+        blog = Blogs.objects.filter(user = request.user, blogId = getId)
+        if blog:
+            res = 'no'
+        else:
+            saveBlog = Blogs(user = request.user,
+                        title = getTitle,
+                        score = getScore,
+                        url = getUrl,
+                        blogId = getId)
+            saveBlog.save()
+            res = "success"
+        data = json.dumps(res)
+        return HttpResponse(data, content_type = "application/json")
+
+def deleteblog(request):
+    if request.is_ajax():
+        getId = request.GET['id']
+
+        blog = Blogs.objects.filter(user = request.user,blogId = getId)
+        blog.delete()
+        res = "success"
+        data = json.dumps(res)
         return HttpResponse(data, content_type = "application/json")
 
 '''

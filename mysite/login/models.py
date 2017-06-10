@@ -25,6 +25,14 @@ class Answers(models.Model):
     def __str__(self):
         return self.answer
 
+# To add blog data to watch later section
+class Blogs(models.Model):
+    user = models.ForeignKey(User)
+    title = models.TextField(max_length=500, blank = True)
+    score = models.TextField(max_length=10, blank = True)
+    url = models.TextField(max_length=100, blank = True)
+    blogId = models.TextField(max_length=50, blank = True)
+
 # Keep track of language which user prefer for answers
 class Language(models.Model):
     user = models.ForeignKey(User)

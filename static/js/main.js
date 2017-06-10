@@ -48,18 +48,6 @@
             });
         });
 
-// Get Blog title and links
-/*
-  <div id="modal1" class="modal modal-fixed-footer" style="width: 85%; height: 95%;max-height: 95%;">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <iframe data-src="https://www.w3schools.com" src = "about:blank" style="width: 100%; height: 100%;padding: 0px;" id="asd"></iframe>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
-    </div>
-  </div>
-*/
 $('.refresh').click(function(){
     $(".blog-content").fadeOut(1000);
 });
@@ -84,7 +72,7 @@ $('.refresh').click(function(){
                             '<div class="card-content flow-text">'+
                             '<a href = "javascript:void(0);" class="right delete" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">delete</i></a>'+
                             '<a href="#modal1" class="modal-trigger right view-blog" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">launch</i></a>'+
-                            '<a href="javascript:void(0);" class="right" style="color: white"><i class="material-icons">note_add</i></a>'+
+                            '<a href="javascript:void(0);" class="right save-blog" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">note_add</i></a>'+
                             '<p>'+data[i][0]+'</p>'+
                             '</div>'+
                             '<div class="card-action">'+
@@ -116,11 +104,52 @@ $('.refresh').click(function(){
         $('#blogshow').on( 'click', '.delete', function() {
             var id = $(this).attr('id');
             console.log('Deleting');
-
+            console.log(id);
             $('div.'+id).hide(1000);
 
         });
 
+        $('#blogshow').on( 'click', '.save-blog', function() {
+            console.log('Saving-------------');
+            var id = $(this).attr('id');
+            var title = $('.'+id).find('p').text();
+            var score = $('.'+id).find('.card-image').text();
+            var url = $('.'+id).find('a.'+id).attr('href');
+            /*console.log("ID -" + id);
+            console.log("Title -"+title);
+            console.log("Score -"+score);
+            console.log("Link -"+link);*/
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saveblog?title="+title+"&score="+score+"&url="+url+"&id="+id,
+                success: function(data){
+                    if(data == 'no')
+                    {
+                        Materialize.toast('Already saved', 4000);
+                    }
+                    else
+                    {
+                        Materialize.toast('Saved', 4000);
+                    }
+                    $('#progress').css('display', 'none');
+                    $('.'+id).find('.card-image').attr('class', 'card-image green center');
+                }
+            });
+        });
+
+        $('#blogshow').on( 'click', '.done-delete', function() {
+            var id = $(this).attr('id');
+            $.ajax({
+                type: "GET",
+                url: "/ajax/deleteblog?id="+id,
+                success: function(data){
+                    Materialize.toast('Deleted', 4000);
+                    $('#progress').css('display', 'none');
+                    $('#'+id).find('.card-image').attr('class', 'card-image red center');
+                    $('div#'+id).hide(1000);
+                }
+            });
+        });
 
 // Save answer
 
@@ -139,7 +168,7 @@ $('.refresh').click(function(){
                     }
                     else
                     {
-                        console.log('Saved');
+                        Materialize.toast('Saved', 4000);
                     }
                     $('#progress').css('display', 'none');
                 }

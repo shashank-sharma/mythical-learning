@@ -10,7 +10,7 @@ from django.db import transaction
 
 from mysite.login.forms import SignUpForm, UserForm, ProfileForm
 from mysite.login.tokens import account_activation_token
-from mysite.login.models import Answers, Language
+from mysite.login.models import Answers, Language, Blogs
 
 import smtplib
 import os
@@ -50,6 +50,23 @@ def answersview(request):
     else:
         language = language.values('lang')[0]['lang']
     return render(request, 'answers.html', {'answers': answers, 'language': language})
+
+@login_required
+def blogsview(request):
+    blogs = Blogs.objects.filter(user=request.user)
+    blogs = blogs.values()
+    blogs = list(blogs)
+    a = []
+
+    for i in blogs:
+        b = []
+        b.append(i['title'])
+        b.append(i['score'])
+        b.append(i['url'])
+        b.append(i['blogId'])
+        a.append(b)
+    blogs = a
+    return render(request, 'later-blog.html', {'blogs': blogs})
 
 def signup(request):
     if request.method == 'POST':

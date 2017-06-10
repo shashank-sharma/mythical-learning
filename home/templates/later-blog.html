@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block pagecontent %}
+<p class="flow-text">Blogs</p>
+<p class="flow-text" style="font-size: 14px;">Click on check mark to remove them</p>
+<hr>
+<div class="row" id = "blogshow">
+{% for title, score, url, blogId in blogs %}
+
+  <div class="col s12 blog-content" id = "{{ blogId }}" style="color: white;display: block;">
+    <div class="card horizontal black">
+      <div class="card-image green center" style="padding: 20px;">
+        {{ score }}
+      </div>
+      <div class="card-stacked">
+        <div class="card-content flow-text">
+        <a href="javascript:void(0);" class="right done-delete" style="color: white" id = "{{ blogId }}"><i class="material-icons">done</i></a>
+          <p>{{ title }}</p>
+        </div>
+        <div class="card-action">
+          <a href="{{ url }}">Link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor  %}
+</div>
+{% endblock %}
