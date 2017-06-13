@@ -21,6 +21,7 @@
 
         $('.get-answer').click(function() {
             $('.loadd').css('display','block');
+            var code = $("a.red").attr('data-tooltip');
             var geturl = $("#problemlink").text();
 
             $.ajax({
@@ -34,7 +35,7 @@
                     else
                     {
                     var kls = data[0].slice(38, data[0].length);
-                    $("#problemanswer").append('<li><div class="collapsible-header"><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body code '+ kls +'"><h3>Solution:</h3><a class = "btn-floating btn waves-effect waves-light right green save-answer" data-code = "'+ kls +'"><i class="material-icons">add</i></a></div>');
+                    $("#problemanswer").append('<li><div class="collapsible-header"><span class="red badge code-badge" id="'+kls+'" style="color:white;">'+ code +'</span><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body code '+ kls +'"><h3>Solution:</h3><a class = "btn-floating btn waves-effect waves-light right green save-answer" data-code = "'+ kls +'"><i class="material-icons">add</i></a></div>');
                     var str;
                     for (i = 1; i < data.length; i++) {
                         str = data[i].replace('\t', '    ');
@@ -169,6 +170,7 @@ $('.refresh').click(function(){
                     else
                     {
                         Materialize.toast('Saved', 4000);
+                        $("#"+code+".code-badge").removeClass("red").addClass("green");
                     }
                     $('#progress').css('display', 'none');
                 }

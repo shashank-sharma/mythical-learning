@@ -7,6 +7,8 @@
 
 Django based web app to enhance learning feature of Competitive Programming.
 
+Mythical learning encourages developers to read source code and blogs related to their choice.
+
 Demo Live version: [Heroku demo site](http://django-myth.herokuapp.com/)
 
 Real site: [Heroku final site](http://mythical-learning.herokuapp.com/)
