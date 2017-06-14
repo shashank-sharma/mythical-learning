@@ -35,13 +35,17 @@
                     else
                     {
                     var kls = data[0].slice(38, data[0].length);
-                    $("#problemanswer").append('<li><div class="collapsible-header"><span class="red badge code-badge" id="'+kls+'" style="color:white;">'+ code +'</span><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body code '+ kls +'"><h3>Solution:</h3><a class = "btn-floating btn waves-effect waves-light right green save-answer" data-code = "'+ kls +'"><i class="material-icons">add</i></a></div>');
+                    $("#problemanswer").append('<li><div class="collapsible-header"><span class="red badge code-badge" id="'+kls+'" style="color:white;">'+ code +'</span><i class="material-icons">question_answer</i>Answer - '+kls+'</div><div class="collapsible-body '+ kls +'"><h3>Solution:</h3><a class = "btn-floating btn waves-effect waves-light right green save-answer" data-code = "'+ kls +'"><i class="material-icons">add</i></a></div>');
                     var str;
+                        $("."+kls).append('<pre class="prettyprint linenums:1" id="'+kls+'"></pre>');
                     for (i = 1; i < data.length; i++) {
                         str = data[i].replace('\t', '    ');
                         console.log(str);
-                        $("."+kls).append('<xmp>'+str+'</xmp>');
+                        $("#out").append('<code>'+str+'\n'+'</code>');
                     }
+                    var src = $('#out').html();
+                    $("pre").html(PR.prettyPrintOne(src));
+                        //$("."+kls).append('</xmp>');
                     $("."+kls).append('<a href = "'+data[0]+'">'+data[0]+'</a>')
                 }
                     $('.loadd').css('display', 'none');
@@ -72,7 +76,7 @@ $('.refresh').click(function(){
                             '<div class="card-stacked">'+
                             '<div class="card-content flow-text">'+
                             '<a href = "javascript:void(0);" class="right delete" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">delete</i></a>'+
-                            '<a href="#modal1" class="modal-trigger right view-blog" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">launch</i></a>'+
+                            '<a href="#modal1" class="modal-trigger right view-blog" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">pageview</i></a>'+
                             '<a href="javascript:void(0);" class="right save-blog" style="color: white" id = "'+ data[i][3] +'"><i class="material-icons">note_add</i></a>'+
                             '<p>'+data[i][0]+'</p>'+
                             '</div>'+

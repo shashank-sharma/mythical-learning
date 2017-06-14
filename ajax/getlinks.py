@@ -83,10 +83,13 @@ def codechefAnswers(url, language):
     z = x[0].find_all('li')
     aa = []
     for i in z:
-        if i.text == '\xa0':
-            aa.append('&nbsp')
+        ia = i.text
+        ia = ia.replace("<", "&lt;")
+        ia = ia.replace(">", "&gt;")
+        if ia == '\xa0':
+            aa.append(' ')
         else:
-            aa.append(i.text)
+            aa.append(ia)
     #final = x[0].text.split('  ')
     aa.insert(0, URL + '/viewsolution/' + tag)
     return aa
