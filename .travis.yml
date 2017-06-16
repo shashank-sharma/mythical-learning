@@ -1,15 +1,19 @@
 language: python
 python:
-  - "3.5"
-  - "3.6"
+- '3.5'
+- '3.6'
 services:
-  - mysql
+- mysql
 env:
-  -DJANGO=1.10 DB=mysql
+  matrix:
+  - -DJANGO=1.10 DB=mysql
+  global:
+    secure: irSjZjKkuexbxQenXZwG0Bumvuj0RwX6cn90Q0cRO/tE3suEvkUhGvJJEuM9zRHRrtEz9zOYzz9DWHOK1k2iX72jCXP2CUH0K7Tz74IdtkBJ+QHrrKaGutHZN0PVk9JSOWlCbz1puC/OGVoJRNas1pQPkOIzGh+IxDxVid/lFlIfcK9V4Ccx6Vln4jBSuWonAm1xOLtU9BN12oXPMT5goV3OYux6pwYYsm1b1RMQSBjORpYplsk/gFhdjgejP8EAUTfVBqtSmAYENTyqzQmCMi48m4NmNxerm9mrpeFxAnedETfrAizJIU4C8S4J7qent3s+50zIqg16hunf1Ui/b8maj80pGJqtL+TZvPGZWx2owG3PuMzNXqexzWvDzgix8c584pjPFdVMAp2XSyZRMbaVkgXsm5avF62AVppl4RrK12UrZWCPspP0KVO1x7AI0gJzX1h7aOtKeQKVTA9MmXoJRUNCzLZKrov9ZJhwuk4+FkhjkReJcfhJnqeUHAIj1+iCIMHH4MLjPhX/njt73Cra9Epy651a1Gygz6snEM5BvTzp0dBRGxLQrO3CLtNUDs0UgmwpN4uqPIdc//7aRYtaYuYGh6bbJ4znEknRHNRnlJ1eKjHy+92zsnLTLzUVG/0498qRx2bGij9I1dDjSSZikZiG6smJ5xcJIZmtH1A=
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 before_script:
-  - mysql -e 'create database test;' -u root
+- mysql -e 'create database test;' -u root
 script:
-  - python manage.py test
+- export SECRET_KEY=$SECRET_KEY
+- python manage.py test
 after_success: coveralls
