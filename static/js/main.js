@@ -81,7 +81,7 @@ $('.refresh').click(function(){
                             '<p>'+data[i][0]+'</p>'+
                             '</div>'+
                             '<div class="card-action">'+
-                            '<a href = "'+data[i][2]+'" class = "'+ data[i][3] +'">Link</a>'+
+                            '<a href = "'+data[i][2]+'" class = "'+ data[i][3] +'" target="_blank">Link</a>'+
                             '</div>'+
                             '</div>'+
                             '</div>'+
