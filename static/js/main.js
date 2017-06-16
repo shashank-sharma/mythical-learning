@@ -59,7 +59,7 @@ $('.refresh').click(function(){
 
         $('.get-blog').click(function() {
             console.log('GET');
-            $('#progress').css('display','block');
+            $('#preload').css('display','block');
             for (j=0; j<5; j++)
             {
             console.log(j);
@@ -87,8 +87,9 @@ $('.refresh').click(function(){
                             '</div>'+
                             '</div>');
                         $("."+data[i][3]).fadeIn();
+                        $("#more-button").fadeIn();
                     }
-                    $('#progress').css('display', 'none');
+                    $('#preload').css('display', 'none');
                 }
             });
         }
