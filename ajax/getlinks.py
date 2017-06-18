@@ -138,3 +138,86 @@ def ynews():
         if count > 0:
             break
     return stories
+
+
+'''
+#######################################################################
+
+Codeforces functions
+
+http://codeforces.com/api/ ...
+
+Problem sets    - problemset.problems
+Sort with tags  - ?tags=implementation
+
+SUBMISSIONS -----------------------------------------------------------
+
+With random problem set:
+  - http://codeforces.com/api/problemset.recentStatus?count=10
+
+With particular problem id:
+  - http://codeforces.com/api/contest.status?contestId=566&from=12000&count=10
+
+
+
+
+#######################################################################
+'''
+
+def codeforces():
+    tags = ['implementation',
+        'dp',
+        'math',
+        'greedy',
+        'brute force',
+        'data structures',
+        'constructive algorithms',
+        'dfs and similar',
+        'sortings',
+        'binary search',
+        'graphs',
+        'trees',
+        'strings',
+        'number theory',
+        'geometry',
+        'combinatorics',
+        'two pointers',
+        'dsu',
+        'bitmasks',
+        'probabilities',
+        'shortest paths',
+        'hashing',
+        'divide and conquer',
+        'games',
+        'matrices',
+        'flows',
+        'string suffix structures',
+        'expression parsing',
+        'graph matchings',
+        'ternary search',
+        'meet-in-the-middle',
+        'fft',
+        '2-sat',
+        'chinese remainder theorem',
+        'schedules']
+
+    # Some API calls will be made here
+    url = ''
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, "html.parser")
+
+    l = soup.find('div', {'class': 'problem-statement'})
+    m = l[0].find_all('div')
+
+    title = m[1].text # Slice text to get meaningful data
+    memoryLimit = m[4].text
+    content = []
+    for i in m[10].find_all('p'):
+        content.append(i)
+
+    inputs = m[11].text
+    output = m[13].text[6:]
+
+    inputEx = m[15].find_all('pre')[0]
+    inputEx = m[15].find_all('pre')[1]
+    
