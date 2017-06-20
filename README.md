@@ -12,3 +12,14 @@ Mythical learning encourages developers to read source code and blogs related to
 Demo Live version: [Heroku demo site](http://django-myth.herokuapp.com/)
 
 Real site: [Heroku final site](http://mythical-learning.herokuapp.com/)
+
+
+## Features
+
+Since this is a web app so it provides few functions which performs few task.
+
+1. Authentication - In this web app Django based Authentication feature is used which is built in. Authentication process includes filling Sign up form and then activating your account from the given link which will be mailed to your email id. After this process you can easily log in.
+
+2. Problems feature - Get competitive programming questions from various sites including answers. This feature focuses more on the answer which is provided from the sources with ease.
+
+3. Blog feature - Get blog title with link in one click and also it can be viewed with iframe.
