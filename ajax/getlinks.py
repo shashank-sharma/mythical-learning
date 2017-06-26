@@ -29,7 +29,7 @@ def codechef():
 
     #r = requests.get(MAIN_URL+result[0])
 
-    with open('ccschool.json') as data_file:
+    with open('data/ccschool.json') as data_file:
         data = json.load(data_file)
 
     rno = randint(0, len(data))
@@ -63,7 +63,7 @@ def codechefAnswers(url, language):
     #soup = BeautifulSoup(r.content, "html.parser")
 
     #l = soup.find_all('a', href = re.compile('^/viewsolution'))
-    with open('ccschool.json') as data_file:
+    with open('data/ccschool.json') as data_file:
         data = json.load(data_file)
 
     for i in data:
@@ -158,7 +158,9 @@ With random problem set:
 With particular problem id:
   - http://codeforces.com/api/contest.status?contestId=566&from=12000&count=10
 
+UPDATE:
 
+Problem set is moved to data/cfproblemset.json
 
 
 #######################################################################
@@ -202,22 +204,9 @@ def codeforces():
         'schedules']
 
     # Some API calls will be made here
-    url = ''
-    r = requests.get(url)
-    soup = BeautifulSoup(r.content, "html.parser")
+    # Update: Offline calls
+    problemJSON = 'data/cfproblemset.json'
 
-    l = soup.find('div', {'class': 'problem-statement'})
-    m = l[0].find_all('div')
+    with open(problemJSON) as data_file:
+        data = json.load(data_file)
 
-    title = m[1].text # Slice text to get meaningful data
-    memoryLimit = m[4].text
-    content = []
-    for i in m[10].find_all('p'):
-        content.append(i)
-
-    inputs = m[11].text
-    output = m[13].text[6:]
-
-    inputEx = m[15].find_all('pre')[0]
-    inputEx = m[15].find_all('pre')[1]
-    
