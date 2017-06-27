@@ -18,6 +18,18 @@ def getlink(request):
     else:
         raise Http404
 
+# Create javascript and work on AJAX call
+def cfgetlink:
+    if request.is_ajax():
+        url, question, content = getlinks.codeforces()
+        pack = []
+        pack.append(url)
+        pack.append(question)
+        pack.append(content)
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+    else:
+        raise Http404
 '''
  Get answer accept one paramter through link which is question link.
  Question link is used to get the ID of that question and later

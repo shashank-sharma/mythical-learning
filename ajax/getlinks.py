@@ -205,8 +205,37 @@ def codeforces():
 
     # Some API calls will be made here
     # Update: Offline calls
+
+    ############### Getting random question #################
+
     problemJSON = 'data/cfproblemset.json'
 
     with open(problemJSON) as data_file:
         data = json.load(data_file)
 
+    rno = random.randint(0, 821)
+    question = data['result']['problems'][rno]
+    code = question['index']
+    contestId = question['contestId']
+    url = 'http://codeforces.com/problemset/problem/'+contestId+'/'+code
+
+    ########################## END ##########################
+
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, "html.parser")
+    l = soup.find('div', {'class': 'problem-statement'})
+    m = l.find_all('div')
+
+    title = m[1].text # Slice text to get meaningful data
+    memoryLimit = m[4].text
+    content = []
+    for i in m[10].find_all('p'):
+        content.append(i)
+
+    inputs = m[11].text
+    outputs = m[13].text[6:]
+
+    inputEx = m[15].find_all('pre')[0]
+    outputEx = m[15].find_all('pre')[1]
+
+    return url, question, content
