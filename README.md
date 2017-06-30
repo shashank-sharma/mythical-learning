@@ -23,3 +23,10 @@ Since this is a web app so it provides few functions which performs few task.
 2. Problems feature - Get competitive programming questions from various sites including answers. This feature focuses more on the answer which is provided from the sources with ease.
 
 3. Blog feature - Get blog title with link in one click and also it can be viewed with iframe.
+
+## Technologies Used
+
+1. Django 1.10
+2. Materialize css
+3. Scrapy
+4. ScrapingHub

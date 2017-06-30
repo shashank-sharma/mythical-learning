@@ -19,7 +19,7 @@ def getlink(request):
         raise Http404
 
 # Create javascript and work on AJAX call
-def cfgetlink:
+def cfgetlink(request):
     if request.is_ajax():
         url, question, content = getlinks.codeforces()
         pack = []
