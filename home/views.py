@@ -3,7 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 
 def main_home(request):
-    return render(request, 'home/main_home.html', {})
+    print('---------')
+    if request.user.is_authenticated():
+        return render(request, 'home.html', {})
+    else:
+        return render(request, 'home/main_home.html', {})
 
 def about(request):
     return render(request, 'about.html', {})

@@ -1,6 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block largepagecontent %}
+<div class="container flow-text">
+  <p>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</p>
+</div>
+<div class="card blue-grey darken-3" style="padding: 10px;">
+<div class="card blue-grey darken-2" style="padding: 10px;">
 
-{% block pagecontent %}
-  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
-  <p>Thanks for confirming your email address!</p>
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Codeforces: C++ Course</span>
+              <p>Follow codeforces question and read source code from high rated users. Start this course and follow the path of some legendary users.<hr></p>
+              <p><b>Description:</b><br>Questions will be picked randomly from codeforces problemset and will be viewed to you. At each question you need to predict the code or you can post your answer on their main website. After that to view answer you need to click one button with proper settings and you will be viewed some best answer among thousands of answers.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+          </div>
+          </div>
+
+          <div class="card #c62828 red darken-3" style="padding: 10px;">
+<div class="card #c62828 red darken-2" style="padding: 10px;">
+
+          <div class="card #c62828 red darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Temple</span>
+              <p>Visit temple and get some knowledge.<hr></p>
+              <p><b>Description:</b><br>Temple consist of 2 sections which are Problems and Blog. Problems provide random problem from CodeChef site and answers for 4 languages. Blog provide random blog with one click and provide bookmark feature.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+          </div>
+          </div>
+
 {% endblock %}
