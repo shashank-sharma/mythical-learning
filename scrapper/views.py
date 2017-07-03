@@ -5,11 +5,17 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
 def temple(request):
     return render(request, 'scrapper/temple.html', {})
 
+@login_required
 def blog(request):
     return render(request, 'scrapper/blog.html', {})
+
+@login_required
+def cpp(request):
+    return render(request, 'scrapper/cpp.html', {})
 
 @login_required
 def problem(request):

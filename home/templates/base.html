@@ -65,7 +65,7 @@ li.L8 { list-style-type: decimal !important }
         <div class="progress" id="load">
       <div class="indeterminate"></div>
   </div>
-            <a class="brand-logo hide-on-med-and-down left">
+            <a class="hide-on-med-and-down left" href="/">
               <img src="{% static '/img/mythical-large.png' %}" height="8%" width="8%" style="padding:4px;padding-left: 30px" />
             </a>
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons">menu</i></a>
@@ -73,7 +73,6 @@ li.L8 { list-style-type: decimal !important }
                <img src="{% static '/img/mythical-large.png' %}" height="50px" width="40px" style="padding-top:8px;"/>
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/">Home</li>
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
             {% if user.is_authenticated %}
