@@ -213,11 +213,11 @@ def codeforces():
     with open(problemJSON) as data_file:
         data = json.load(data_file)
 
-    rno = random.randint(0, 821)
+    rno = randint(0, 821)
     question = data['result']['problems'][rno]
     code = question['index']
     contestId = question['contestId']
-    url = 'http://codeforces.com/problemset/problem/'+contestId+'/'+code
+    url = 'http://codeforces.com/problemset/problem/'+str(contestId)+'/'+code
 
     ########################## END ##########################
 
@@ -237,5 +237,6 @@ def codeforces():
 
     inputEx = m[15].find_all('pre')[0]
     outputEx = m[15].find_all('pre')[1]
+
 
     return url, question, content

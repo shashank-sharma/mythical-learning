@@ -26,7 +26,7 @@ def cfgetlink(request):
         pack.append(url)
         pack.append(question)
         pack.append(content)
-        data = json.dumps(a)
+        data = json.dumps(str(pack[2]))
         return HttpResponse(data, content_type = "application/json")
     else:
         raise Http404

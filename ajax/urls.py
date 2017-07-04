@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^save-lang2', views.savelang2, name = 'savelang2'),
     url(r'^save-lang3', views.savelang3, name = 'savelang3'),
     url(r'^save-lang4', views.savelang4, name = 'savelang4'),
+
+    url(r'^cfgetlink', views.cfgetlink, name = 'cfgetlink'),
 ]
