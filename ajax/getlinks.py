@@ -233,10 +233,11 @@ def codeforces():
         content.append(i)
 
     inputs = m[11].text
-    outputs = m[13].text[6:]
+    outputs = m[13].text
 
     inputEx = m[15].find_all('pre')[0]
     outputEx = m[15].find_all('pre')[1]
 
+    values = (title, url, question, content, inputs, outputs, inputEx, outputEx)
 
-    return url, question, content
+    return values

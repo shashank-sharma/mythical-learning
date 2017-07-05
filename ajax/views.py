@@ -21,12 +21,23 @@ def getlink(request):
 # Create javascript and work on AJAX call
 def cfgetlink(request):
     if request.is_ajax():
-        url, question, content = getlinks.codeforces()
-        pack = []
-        pack.append(url)
-        pack.append(question)
-        pack.append(content)
-        data = json.dumps(str(pack[2]))
+        title, url, question, content, inp, ou, inx, oux = getlinks.codeforces()
+        temp = ''.join(str(i) for i in content)
+        if 'src="/predownloaded' in temp:
+            temp = temp.replace('/predownloaded', 'http://codeforces.com/predownloaded')
+        inp = str(inp)
+        inp = '<br>'+inp[:5]+'</br>'+ inp[5:]
+        ou = '<br>'+ou[:6]+'</br>'+ou[6:]
+        finalData = []
+        finalData.append(title)
+        finalData.append(url)
+        finalData.append(question)
+        finalData.append(temp)
+        finalData.append(inp)
+        finalData.append(ou)
+        finalData.append(str(inx))
+        finalData.append(str(oux))
+        data = json.dumps(finalData)
         return HttpResponse(data, content_type = "application/json")
     else:
         raise Http404

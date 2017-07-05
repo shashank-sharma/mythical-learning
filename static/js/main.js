@@ -190,7 +190,7 @@ $('.refresh').click(function(){
 
         $('.cfgetlink').click(function() {
             console.log("Working");
-            //$('#progress').css('display','block');
+            $('#progress').css('display','block');
 
             $.ajax({
                 type: "GET",
@@ -203,8 +203,10 @@ $('.refresh').click(function(){
                         //$('ul').append('<li>' + data[i] + '</li>');
                         //console.log(data[i]);
                     //}
-                        $('#problem-page').append('<p>'+data+'</p>');
-                    //$('#progress').css('display', 'none');
+                    //$('#problem-page').append('<p>'+data+'</p>');
+                    $('#problem-page').append('<h1>'+data[0]+'</h1>'+data[3]+'<a href="'+data[1]+'">'+data[1]+'</a><br>');
+                    $('#problem-page').append('<p>'+data[4]+'</p><p>'+data[5]+'</p><p>'+data[6]+'</p><hr><p>'+data[7]+'</p>');
+                    $('#progress').css('display', 'none');
                     //$('#problema').css('display', 'block');
                 }
             });
