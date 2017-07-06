@@ -1,8 +1,97 @@
 {% extends 'base.html' %} {% block largepagecontent %}
-<div class="flow-text" style="padding: 5%;">
-<p>Hello, World</p>
+<div style="padding: 5%;">
+<div class="row">
+<div class="col s12 m3">
+<p>Get started by pressing this button</p>
 <a class="cfgetlink btn">Get</a>
-<div id="problem-page">
 </div>
+<div class="col s12 m8">
+<div class="difficulty-A right card" style="border:15px solid #4caf50;padding: 40px;">
+	 <h1 class = "center" >A</h1>
+	 <a class="btn-floating halfway-fab waves-effect waves-light green right btn-large"><i class="material-icons">add</i></a>
+
+</div>
+<div class="difficulty-B right card" style="border:15px solid #ffeb3b;padding: 40px;">
+	 <h1 class = "center" >B</h1>
+	 <a class="btn-floating halfway-fab waves-effect waves-light yellow right btn-large"><i class="material-icons">add</i></a>
+
+</div>
+<div class="difficulty-C right card" style="border:15px solid #ff9800;padding: 40px;">
+	 <h1 class = "center" >C</h1>
+	 <a class="btn-floating halfway-fab waves-effect waves-light orange right btn-large"><i class="material-icons">add</i></a>
+
+</div>
+<div class="difficulty-D right card" style="border:15px solid #f44336;padding: 40px;">
+	 <h1 class = "center" >D+</h1>
+	 <a class="btn-floating halfway-fab waves-effect waves-light red right btn-large"><i class="material-icons">add</i></a>
+
+</div>
+
+
+
+
+</div>
+<a href="#modal1" class="right">help?</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Question Ratings</h4>
+      <p>Each question comprise of various ratings and ratings are set on the level of difficulty it possess. A being the easiest one and D, E, F are the hardest one.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+</div>
+
+
+<div id="problem-page" class="flow-text">
+
+
+</div>
+
+<hr>
+<div id="problem-answer" style="font-size: 14px;display: none;">
+
+<div id="problemanswer"></div>
+<div class="s6 m12 l6 right">
+<a class="{{ A }} tooltipped" id="save-rating1" data-position="top" data-delay="50" data-tooltip="Easy"><i class="material-icons">code</i></a>
+<a class="{{ B }} tooltipped" id="save-rating2" data-position="top" data-delay="50" data-tooltip="Medium"><i class="material-icons">code</i></a>
+<a class="{{ C }} tooltipped" id="save-rating3" data-position="top" data-delay="50" data-tooltip="Hard"><i class="material-icons">code</i></a>
+<a class="{{ D }} tooltipped" id="save-rating4" data-position="top" data-delay="50" data-tooltip="Expert"><i class="material-icons">code</i></a>
+<br>
+<p style="font-size: 14px" class="flow-text">Select rating for your answer</p>
+<a href = "#modal2"><p class="right flow-text" style="font-size: 14px;">help?</p></a>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Answer Ratings</h4>
+      <p>EEach answer have its own rating on the basis of user. If user is Legendary Master then his answer will be on Expert rating and you can view it by selecting it. Each button have 3 sub division of rating. For example Easy has Novice, Begineer ratings and such like that it increases</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+<center>
+<br>
+    <div class="preloader-wrapper large active" style="display: none;" id="preload">
+    <div class="spinner-layer spinner-green-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  </center>
 </div>
 {% endblock %}

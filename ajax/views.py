@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from django.http import Http404, HttpResponse
 from . import getlinks
-from mysite.login.models import Language, Answers, Blogs
+from mysite.login.models import Language, Answers, Blogs, Rating
 
 # Create your views here.
 
@@ -41,6 +41,20 @@ def cfgetlink(request):
         return HttpResponse(data, content_type = "application/json")
     else:
         raise Http404
+
+def cfgetanswer(request):
+    link = request.GET['link']
+    code = request.GET['code']
+    if request.is_ajax():
+        content, url = getlinks.codeforcesAnswer(link, code)
+        if url == None:
+            data = json.dumps('no')
+            return HttpResponse(data, content_type = "application/json")
+        finalData = []
+        finalData.append(str(content))
+        finalData.append(url)
+        data = json.dumps(finalData)
+        return HttpResponse(data, content_type = "application/json")
 '''
  Get answer accept one paramter through link which is question link.
  Question link is used to get the ID of that question and later
@@ -182,6 +196,54 @@ def savelang4(request):
             q.save()
         else:
             Language.objects.filter(user = request.user).update(lang = " PYTH")
+        a = 'success'
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+
+def saverating1(request):
+    if request.is_ajax():
+        q = Rating.objects.filter(user = request.user)
+        if not q:
+            q = Rating(user = request.user, rating = "A")
+            q.save()
+        else:
+            Rating.objects.filter(user = request.user).update(rating = "A")
+        a = 'success'
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+
+def saverating2(request):
+    if request.is_ajax():
+        q = Rating.objects.filter(user = request.user)
+        if not q:
+            q = Rating(user = request.user, rating = "B")
+            q.save()
+        else:
+            Rating.objects.filter(user = request.user).update(rating = "B")
+        a = 'success'
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+
+def saverating3(request):
+    if request.is_ajax():
+        q = Rating.objects.filter(user = request.user)
+        if not q:
+            q = Rating(user = request.user, rating = "C")
+            q.save()
+        else:
+            Rating.objects.filter(user = request.user).update(rating = "C")
+        a = 'success'
+        data = json.dumps(a)
+        return HttpResponse(data, content_type = "application/json")
+
+def saverating4(request):
+    if request.is_ajax():
+        q = Rating.objects.filter(user = request.user)
+        if not q:
+            q = Rating(user = request.user, rating = "D")
+            q.save()
+        else:
+            Rating.objects.filter(user = request.user).update(rating = "D")
         a = 'success'
         data = json.dumps(a)
         return HttpResponse(data, content_type = "application/json")

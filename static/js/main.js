@@ -163,7 +163,7 @@ $('.refresh').click(function(){
             $('#progress').css('display','block');
             var code = $(this).attr("data-code");
             var geturl = $("#problemlink").text();
-            console.log(code);
+            consolelog(code);
             $.ajax({
                 type: "GET",
                 url: "/ajax/saveanswer?code="+code+"&url="+geturl,
@@ -191,12 +191,22 @@ $('.refresh').click(function(){
         $('.cfgetlink').click(function() {
             console.log("Working");
             $('#progress').css('display','block');
+            $(".difficulty-A").fadeOut(1000);
+            $(".difficulty-B").fadeOut(1000);
+            $(".difficulty-C").fadeOut(1000);
+            $(".difficulty-D").fadeOut(1000);
 
             $.ajax({
                 type: "GET",
                 url: "/ajax/cfgetlink",
                 success: function(data) {
                     //console.log(data);
+                    cfindex = data[2]['index'];
+                    if(cfindex == 'E' || cfindex == 'F' || cfindex == 'G' || cfindex == 'H')
+                    {
+                        cfindex = 'D';
+                    }
+                    $('.difficulty-'+cfindex).fadeIn(1000);
                     $('#problem-page').html('<h3>Problem</h3><br><hr>');
                     //$('#problemlink').html('<a href = "'+data[0]+'">'+data[0]+'</a>');
                     //for (i = 0; i < data.length; i++) {
@@ -204,12 +214,116 @@ $('.refresh').click(function(){
                         //console.log(data[i]);
                     //}
                     //$('#problem-page').append('<p>'+data+'</p>');
-                    $('#problem-page').append('<h1>'+data[0]+'</h1>'+data[3]+'<a href="'+data[1]+'">'+data[1]+'</a><br>');
+                    $('#problem-page').append('<h1>'+data[0]+'</h1>'+data[3]+'<a href="'+data[1]+'" id = "problemlink">'+data[1]+'</a><br>');
                     $('#problem-page').append('<p>'+data[4]+'</p><p>'+data[5]+'</p><p>'+data[6]+'</p><hr><p>'+data[7]+'</p>');
                     $('#progress').css('display', 'none');
+                    $('#problem-answer').css('display','block');
+                    $("#problem-answer").append('<a class="cfgetanswer btn">Get</a>');
                     //$('#problema').css('display', 'block');
                 }
             });
+        });
+
+        $('#problem-answer').on( 'click', '.cfgetanswer', function() {
+            $('#preload').css('display','block');
+            //var code = $("a.red").attr('data-tooltip');
+            var geturl = $("#problemlink").text();
+            var code = $("a.red.tooltipped").attr('data-tooltip');
+
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/cfgetanswer?link="+geturl+"&code="+code,
+                success: function(data) {
+                    console.log(code);
+                    if(data == 'no')
+                    {
+                        Materialize.toast('No more solution left', 4000);
+                    }
+                    else
+                    {
+                    $("#problemanswer").html('<div id = "cfcode">'+PR.prettyPrintOne(data[0])+'<br>'+data[1]+'<div>');
+                    var src = $('#cfcode').html();
+                }
+                    $('#preload').css('display', 'none');
+                }
+            });
+        });
+
+        $('#save-rating1').click(function(){
+            $('#progress').css('display', 'block');
+            var geturl = $("#problemlink").text();
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saverating1",
+                success: function(data) {
+                    $("#save-rating1").removeClass("blue").addClass("red pulse");
+                    $("#save-rating2").removeClass("red pulse").addClass("blue");
+                    $("#save-rating3").removeClass("red pulse").addClass("blue");
+                    $("#save-rating4").removeClass("red pulse").addClass("blue");
+                    $('#progress').css('display', 'none');
+                }
+
+            });
+
+        });
+
+        $('#save-rating2').click(function(){
+            $('#progress').css('display', 'block');
+            var geturl = $("#problemlink").text();
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saverating2",
+                success: function(data) {
+                    $("#save-rating1").removeClass("red pulse").addClass("blue");
+                    $("#save-rating2").removeClass("blue").addClass("red pulse");
+                    $("#save-rating3").removeClass("red pulse").addClass("blue");
+                    $("#save-rating4").removeClass("red pulse").addClass("blue");
+                    $('#progress').css('display', 'none');
+                }
+
+            });
+
+        });
+
+        $('#save-rating3').click(function(){
+            $('#progress').css('display', 'block');
+            var geturl = $("#problemlink").text();
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saverating3",
+                success: function(data) {
+                    $("#save-rating1").removeClass("red pulse").addClass("blue");
+                    $("#save-rating2").removeClass("red pulse").addClass("blue");
+                    $("#save-rating3").removeClass("blue").addClass("red pulse");
+                    $("#save-rating4").removeClass("red pulse").addClass("blue");
+                    $('#progress').css('display', 'none');
+                }
+
+            });
+
+        });
+
+        $('#save-rating4').click(function(){
+            $('#progress').css('display', 'block');
+            var geturl = $("#problemlink").text();
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/saverating4",
+                success: function(data) {
+                    $("#save-rating1").removeClass("red pulse").addClass("blue");
+                    $("#save-rating2").removeClass("red pulse").addClass("blue");
+                    $("#save-rating3").removeClass("red pulse").addClass("blue");
+                    $("#save-rating4").removeClass("blue").addClass("red pulse");
+                    $('#progress').css('display', 'none');
+                }
+
+            });
+
         });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

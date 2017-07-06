@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . import getlinks
-from mysite.login.models import Language
+from mysite.login.models import Language, Rating
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -15,7 +15,29 @@ def blog(request):
 
 @login_required
 def cpp(request):
-    return render(request, 'scrapper/cpp.html', {})
+    rating = Rating.objects.filter(user = request.user)
+
+    A = 'btn btn-floating btn'
+    B = 'btn btn-floating btn'
+    C = 'btn btn-floating btn'
+    D = 'btn btn-floating btn'
+
+    if not rating:
+        A += ' pulse'
+        B += ' pulse'
+        C += ' pulse'
+        D += ' pulse'
+    else:
+        rating = rating.values('rating')[0]['rating']
+        if rating == 'A':
+            A = A + ' red pulse'
+        elif rating == 'B':
+            B = B + ' red pulse'
+        elif rating == 'C':
+            C = C + ' red pulse'
+        else:
+            D = D + ' red pulse'
+    return render(request, 'scrapper/cpp.html', {'A': A, 'B': B, 'C': C, 'D': D})
 
 @login_required
 def problem(request):

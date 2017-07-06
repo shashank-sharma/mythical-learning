@@ -38,6 +38,11 @@ class Language(models.Model):
     user = models.ForeignKey(User)
     lang = models.TextField(max_length=20, blank = True)
 
+# Make sure user get solution from given rating in Codeforces page
+class Rating(models.Model):
+    user = models.ForeignKey(User)
+    rating = models.TextField(max_length=20, blank=True)
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:

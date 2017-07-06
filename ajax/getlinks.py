@@ -241,3 +241,54 @@ def codeforces():
     values = (title, url, question, content, inputs, outputs, inputEx, outputEx)
 
     return values
+
+def codeforcesAnswer(url, code):
+    with open('data/fgpp14.json') as data_file:
+        data = json.load(data_file)
+
+    url = url.split('/')
+    contestId = int(url[5])
+    index = url[6]
+
+    for i in data:
+        if i['contestId'] == contestId and i['index'] == index:
+            finalData = i
+            break
+    ratings = ['Legendary grandmaster',
+            'International Grandmaster',
+            'Grandmaster', 'International master',
+            'Master',
+            'Candidate Master',
+            'Expert',
+            'Specialist',
+            'Pupil',
+            'Newbie',
+            'Unrated,',
+            'Headquarters,']
+
+    if code == 'Expert':
+        frating = ratings[:3]
+    elif code == 'Hard':
+        frating = ratings[3:6]
+    elif code == 'Medium':
+        frating = ratings[6:9]
+    else:
+        frating = ratings[9:]
+
+    subbox = []
+    for i in frating:
+        if i in finalData['rating']:
+            fkeys = list(finalData['rating'][i].keys())
+            for j in fkeys:
+                subm = finalData['rating'][i][j]
+                subbox.append(subm)
+
+    if subbox == []:
+        return None, None
+    srno = randint(0, len(subbox)-1)
+    subm = subbox[srno]
+    subUrl = 'http://codeforces.com/contest/'+str(contestId)+'/submission/'+str(subm)
+    r = requests.get(subUrl)
+    soup = BeautifulSoup(r.content, "html.parser")
+    l = soup.find_all('pre', {'class': 'prettyprint'})
+    return l[0], subUrl
