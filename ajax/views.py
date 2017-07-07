@@ -18,6 +18,19 @@ def getlink(request):
     else:
         raise Http404
 
+def cfdone(request):
+    url = request.GET['url']
+    if request.is_ajax():
+        cf = cfProgress.objects.filter(user = request.user)
+        if not cf:
+            cf = 'no'
+        else:
+            cfs = cf.values('question')[0]['question']
+            print(cfs)
+            cfProgress.objects.filter(user = request.user).update(question = str(int(cfs)+1))
+            cf = 'yes'
+        data = json.dumps(cf)
+        return HttpResponse(data, content_type = "application/json")
 # Create javascript and work on AJAX call
 def cfgetlink(request):
     method = request.GET['type']
@@ -26,8 +39,10 @@ def cfgetlink(request):
             cf = cfProgress.objects.filter(user = request.user)
             if not cf:
                 cf = "1"
+                cfs = cfProgress(user = request.user, question = str(int(cf)+1))
+                cfs.save()
             else:
-                cf = cfProgress.values('question')[0]['question']
+                cf = cf.values('question')[0]['question']
             method = cf
         title, url, question, content, inp, ou, inx, oux = getlinks.codeforces(method)
         temp = ''.join(str(i) for i in content)

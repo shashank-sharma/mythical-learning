@@ -242,6 +242,10 @@ $('.refresh').click(function(){
                         cfindex = 'D';
                     }
                     $('.difficulty-'+cfindex).fadeIn(1000);
+                                        $('.cfdone1').css('display','block');
+                    $('.cfdone2').css('display','block');
+                    $('.cfdone3').css('display','block');
+                    $('.cfdone4').css('display','block');
                     $('#problem-page').html('<h3>Problem</h3><br><hr>');
                     //$('#problemlink').html('<a href = "'+data[0]+'">'+data[0]+'</a>');
                     //for (i = 0; i < data.length; i++) {
@@ -256,6 +260,28 @@ $('.refresh').click(function(){
                     //$('#problema').css('display', 'block');
                 }
             });
+        });
+
+        $('#cfdone1, #cfdone2, #cfdone3, #cfdone4').click(function(){
+            $('#progress').css('display', 'block');
+            var geturl = $("#problemlink").text();
+            $.ajax({
+                type: "GET",
+                url: "/ajax/cfdone?url="+geturl,
+                success: function(data) {
+                    if(data == 'no')
+                    {
+                        Materialize.toast('You are feeling lucky', 4000);
+                    }
+                    else
+                    {
+                        Materialize.toast('Marked as done', 4000);
+                    }
+                    $('#progress').css('display', 'none');
+                }
+
+            });
+
         });
 
         $('#problem-answer').on( 'click', '.cfgetanswer', function() {
