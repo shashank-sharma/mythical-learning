@@ -198,11 +198,11 @@ $('.refresh').click(function(){
 
             $.ajax({
                 type: "GET",
-                url: "/ajax/cfgetlink",
+                url: "/ajax/cfgetlink?type=random",
                 success: function(data) {
                     //console.log(data);
                     cfindex = data[2]['index'];
-                    if(cfindex == 'E' || cfindex == 'F' || cfindex == 'G' || cfindex == 'H')
+                    if(cfindex == 'E' || cfindex == 'F' || cfindex == 'G' || cfindex == 'H' || cfindex == 'I')
                     {
                         cfindex = 'D';
                     }
@@ -218,7 +218,41 @@ $('.refresh').click(function(){
                     $('#problem-page').append('<p>'+data[4]+'</p><p>'+data[5]+'</p><p>'+data[6]+'</p><hr><p>'+data[7]+'</p>');
                     $('#progress').css('display', 'none');
                     $('#problem-answer').css('display','block');
-                    $("#problem-answer").append('<a class="cfgetanswer btn">Get</a>');
+                    //$('#problema').css('display', 'block');
+                }
+            });
+        });
+
+        $('.cfgetnicelink').click(function() {
+            console.log("Working");
+            $('#progress').css('display','block');
+            $(".difficulty-A").fadeOut(1000);
+            $(".difficulty-B").fadeOut(1000);
+            $(".difficulty-C").fadeOut(1000);
+            $(".difficulty-D").fadeOut(1000);
+
+            $.ajax({
+                type: "GET",
+                url: "/ajax/cfgetlink?type=ordered",
+                success: function(data) {
+                    //console.log(data);
+                    cfindex = data[2]['index'];
+                    if(cfindex == 'E' || cfindex == 'F' || cfindex == 'G' || cfindex == 'H' || cfindex == 'I')
+                    {
+                        cfindex = 'D';
+                    }
+                    $('.difficulty-'+cfindex).fadeIn(1000);
+                    $('#problem-page').html('<h3>Problem</h3><br><hr>');
+                    //$('#problemlink').html('<a href = "'+data[0]+'">'+data[0]+'</a>');
+                    //for (i = 0; i < data.length; i++) {
+                        //$('ul').append('<li>' + data[i] + '</li>');
+                        //console.log(data[i]);
+                    //}
+                    //$('#problem-page').append('<p>'+data+'</p>');
+                    $('#problem-page').append('<h1>'+data[0]+'</h1>'+data[3]+'<a href="'+data[1]+'" id = "problemlink">'+data[1]+'</a><br>');
+                    $('#problem-page').append('<p>'+data[4]+'</p><p>'+data[5]+'</p><p>'+data[6]+'</p><hr><p>'+data[7]+'</p>');
+                    $('#progress').css('display', 'none');
+                    $('#problem-answer').css('display','block');
                     //$('#problema').css('display', 'block');
                 }
             });

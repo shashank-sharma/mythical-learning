@@ -43,6 +43,10 @@ class Rating(models.Model):
     user = models.ForeignKey(User)
     rating = models.TextField(max_length=20, blank=True)
 
+class cfProgress(models.Model):
+    user = models.ForeignKey(User)
+    question = models.TextField(max_length=20, blank=True)
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:

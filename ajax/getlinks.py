@@ -166,7 +166,7 @@ Problem set is moved to data/cfproblemset.json
 #######################################################################
 '''
 
-def codeforces():
+def codeforces(method):
     tags = ['implementation',
         'dp',
         'math',
@@ -205,22 +205,23 @@ def codeforces():
 
     # Some API calls will be made here
     # Update: Offline calls
-
-    ############### Getting random question #################
-
     problemJSON = 'data/cfproblemset.json'
 
     with open(problemJSON) as data_file:
         data = json.load(data_file)
 
-    rno = randint(0, 821)
+    if method == 'random':
+        ############### Getting random question #################
+        rno = randint(0, 821)
+    else:
+        rno = -int(method)
+
     question = data['result']['problems'][rno]
     code = question['index']
     contestId = question['contestId']
     url = 'http://codeforces.com/problemset/problem/'+str(contestId)+'/'+code
 
-    ########################## END ##########################
-
+        ########################## END ##########################
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "html.parser")
     l = soup.find('div', {'class': 'problem-statement'})

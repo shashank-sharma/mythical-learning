@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from django.http import Http404, HttpResponse
 from . import getlinks
-from mysite.login.models import Language, Answers, Blogs, Rating
+from mysite.login.models import Language, Answers, Blogs, Rating, cfProgress
 
 # Create your views here.
 
@@ -20,8 +20,16 @@ def getlink(request):
 
 # Create javascript and work on AJAX call
 def cfgetlink(request):
+    method = request.GET['type']
     if request.is_ajax():
-        title, url, question, content, inp, ou, inx, oux = getlinks.codeforces()
+        if method == 'ordered':
+            cf = cfProgress.objects.filter(user = request.user)
+            if not cf:
+                cf = "1"
+            else:
+                cf = cfProgress.values('question')[0]['question']
+            method = cf
+        title, url, question, content, inp, ou, inx, oux = getlinks.codeforces(method)
         temp = ''.join(str(i) for i in content)
         if 'src="/predownloaded' in temp:
             temp = temp.replace('/predownloaded', 'http://codeforces.com/predownloaded')
