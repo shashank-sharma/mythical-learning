@@ -20,13 +20,21 @@ def getlink(request):
 
 def cfdone(request):
     url = request.GET['url']
+    quality = request.GET['quality']
     if request.is_ajax():
         cf = cfProgress.objects.filter(user = request.user)
         if not cf:
             cf = 'no'
         else:
-            cfs = cf.values('question')[0]['question']
-            print(cfs)
+            if quality == 'A':
+                cfquestion = 'question'
+            elif quality == 'B':
+                cfquestion = 'question2'
+            elif quality == 'C':
+                cfquestion = 'question3'
+            elif quality == 'D':
+                cfquestion = 'question4'
+            cfs = cf.values(cfquestion)[0][cfquestion]
             cfProgress.objects.filter(user = request.user).update(question = str(int(cfs)+1))
             cf = 'yes'
         data = json.dumps(cf)
@@ -34,17 +42,34 @@ def cfdone(request):
 # Create javascript and work on AJAX call
 def cfgetlink(request):
     method = request.GET['type']
+    quality = request.GET['quality']
     if request.is_ajax():
         if method == 'ordered':
             cf = cfProgress.objects.filter(user = request.user)
             if not cf:
                 cf = "1"
-                cfs = cfProgress(user = request.user, question = str(int(cf)+1))
+                cfs = cfProgress(user = request.user, question = str(int(cf)),
+                    question2 = str(int(cf)),
+                    question3 = str(int(cf)),
+                    question4 = str(int(cf)))
                 cfs.save()
             else:
-                cf = cf.values('question')[0]['question']
+                print(quality)
+                if quality == 'A':
+                    cfquestion = 'question'
+                elif quality == 'B':
+                    cfquestion = 'question2'
+                elif quality == 'C':
+                    cfquestion = 'question3'
+                else:
+                    cfquestion = 'question4'
+                cf = cf.values(cfquestion)[0][cfquestion]
             method = cf
-        title, url, question, content, inp, ou, inx, oux = getlinks.codeforces(method)
+        try:
+            title, url, question, content, inp, ou, inx, oux = getlinks.codeforces(method, quality)
+        except:
+            data = json.dumps('no')
+            return HttpResponse(data, content_type = "application/json")
         temp = ''.join(str(i) for i in content)
         if 'src="/predownloaded' in temp:
             temp = temp.replace('/predownloaded', 'http://codeforces.com/predownloaded')

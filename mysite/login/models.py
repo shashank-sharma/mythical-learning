@@ -46,6 +46,9 @@ class Rating(models.Model):
 class cfProgress(models.Model):
     user = models.ForeignKey(User)
     question = models.TextField(max_length=20, blank=True)
+    question2 = models.TextField(max_length=20, blank=True)
+    question3 = models.TextField(max_length=20, blank=True)
+    question4 = models.TextField(max_length=20, blank=True)
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):

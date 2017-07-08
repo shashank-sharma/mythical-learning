@@ -166,7 +166,7 @@ Problem set is moved to data/cfproblemset.json
 #######################################################################
 '''
 
-def codeforces(method):
+def codeforces(method, quality):
     tags = ['implementation',
         'dp',
         'math',
@@ -212,10 +212,23 @@ def codeforces(method):
 
     if method == 'random':
         ############### Getting random question #################
-        rno = randint(0, 821)
+        while True:
+            rno = randint(0, 821)
+            if data['result']['problems'][rno]['index'] == quality:
+                break
+            else:
+                continue
     else:
-        rno = -int(method)
-
+        #rno = -int(method)
+        flag = 0
+        for i in range(1, 821):
+            if data['result']['problems'][-i]['contestId'] == int(method):
+                if quality in data['result']['problems'][-i]['index']:
+                    rno = -i
+                    flag = 1
+                    break
+    if flag == 0:
+        return 'no'
     question = data['result']['problems'][rno]
     code = question['index']
     contestId = question['contestId']

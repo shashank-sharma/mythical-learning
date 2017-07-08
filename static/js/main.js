@@ -187,19 +187,48 @@ $('.refresh').click(function(){
 ////////////////////////////             CODEFORCES             ///////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
+        function cfreload(){
+            $("#problem-page").fadeOut(1000);
+            $('#problem-page').html('');
+            $("#problem-page").fadeIn(1000);
+            $("#problem-answer").fadeOut(1000);
+            $('#problem-answer').html('');
+            $("#problem-answer").fadeIn(1000);
+            $(".difficulty-A").fadeIn(1000);
+            $(".difficulty-B").fadeIn(1000);
+            $(".difficulty-C").fadeIn(1000);
+            $(".difficulty-D").fadeIn(1000);
+            $('.cfdone1').css('display','none');
+            $('.cfdone2').css('display','none');
+            $('.cfdone3').css('display','none');
+            $('.cfdone4').css('display','none');
+            $('#cfchoose1').css('display', 'block');
+            $('#cfchoose2').css('display', 'block');
+            $('#cfchoose3').css('display', 'block');
+            $('#cfchoose4').css('display', 'block');
+        };
+        $('#cfreload').click(function(){
+            cfreload();
+        });
         $('.cfgetlink').click(function() {
             console.log("Working");
+            var quality = document.getElementById('cfcheck').className
+            console.log(quality);
             $('#progress').css('display','block');
             $(".difficulty-A").fadeOut(1000);
             $(".difficulty-B").fadeOut(1000);
             $(".difficulty-C").fadeOut(1000);
             $(".difficulty-D").fadeOut(1000);
-
             $.ajax({
                 type: "GET",
-                url: "/ajax/cfgetlink?type=random",
+                url: "/ajax/cfgetlink?type=random&quality="+quality,
                 success: function(data) {
+                    if(data == 'no')
+                    {
+                        Materialize.toast('No question for this rating', 4000);
+                        $('#progress').css('display', 'none');
+                        cfreload();
+                    }
                     //console.log(data);
                     cfindex = data[2]['index'];
                     if(cfindex == 'E' || cfindex == 'F' || cfindex == 'G' || cfindex == 'H' || cfindex == 'I')
@@ -207,7 +236,7 @@ $('.refresh').click(function(){
                         cfindex = 'D';
                     }
                     $('.difficulty-'+cfindex).fadeIn(1000);
-                    $('#problem-page').html('<h3>Problem</h3><br><hr>');
+                    $('#problem-page').html('<h3>Problem</h3><br><h6 class="right">Double tap to add</h6><hr>');
                     //$('#problemlink').html('<a href = "'+data[0]+'">'+data[0]+'</a>');
                     //for (i = 0; i < data.length; i++) {
                         //$('ul').append('<li>' + data[i] + '</li>');
@@ -225,6 +254,8 @@ $('.refresh').click(function(){
 
         $('.cfgetnicelink').click(function() {
             console.log("Working");
+            var quality = document.getElementById('cfcheck').className
+            console.log(quality);
             $('#progress').css('display','block');
             $(".difficulty-A").fadeOut(1000);
             $(".difficulty-B").fadeOut(1000);
@@ -233,8 +264,14 @@ $('.refresh').click(function(){
 
             $.ajax({
                 type: "GET",
-                url: "/ajax/cfgetlink?type=ordered",
+                url: "/ajax/cfgetlink?type=ordered&quality="+quality,
                 success: function(data) {
+                    if(data == 'no')
+                    {
+                        Materialize.toast('No question for this rating', 4000);
+                        $('#progress').css('display', 'none');
+                        cfreload();
+                    }
                     //console.log(data);
                     cfindex = data[2]['index'];
                     if(cfindex == 'E' || cfindex == 'F' || cfindex == 'G' || cfindex == 'H' || cfindex == 'I')
@@ -246,7 +283,7 @@ $('.refresh').click(function(){
                     $('.cfdone2').css('display','block');
                     $('.cfdone3').css('display','block');
                     $('.cfdone4').css('display','block');
-                    $('#problem-page').html('<h3>Problem</h3><br><hr>');
+                    $('#problem-page').html('<h3>Problem</h3><br><h6 class="right">Double tap to add</h6><hr>');
                     //$('#problemlink').html('<a href = "'+data[0]+'">'+data[0]+'</a>');
                     //for (i = 0; i < data.length; i++) {
                         //$('ul').append('<li>' + data[i] + '</li>');
@@ -264,10 +301,11 @@ $('.refresh').click(function(){
 
         $('#cfdone1, #cfdone2, #cfdone3, #cfdone4').click(function(){
             $('#progress').css('display', 'block');
+            var quality = document.getElementById('cfcheck').className
             var geturl = $("#problemlink").text();
             $.ajax({
                 type: "GET",
-                url: "/ajax/cfdone?url="+geturl,
+                url: "/ajax/cfdone?url="+geturl+'&quality='+quality,
                 success: function(data) {
                     if(data == 'no')
                     {
@@ -310,6 +348,35 @@ $('.refresh').click(function(){
             });
         });
 
+        $('#cfchoose1').click(function(){
+            $('#cfchoose1').css('display', 'none');
+            $("#cfcheck").attr('class', 'A');
+            $(".difficulty-B").fadeOut(1000);
+            $(".difficulty-C").fadeOut(1000);
+            $(".difficulty-D").fadeOut(1000);
+        });
+
+        $('#cfchoose2').click(function(){
+            $('#cfchoose2').css('display', 'none');
+            $("#cfcheck").attr('class', 'B');
+            $(".difficulty-A").fadeOut(1000);
+            $(".difficulty-C").fadeOut(1000);
+            $(".difficulty-D").fadeOut(1000);
+        });
+        $('#cfchoose3').click(function(){
+            $('#cfchoose3').css('display', 'none');
+            $("#cfcheck").attr('class', 'C');
+            $(".difficulty-A").fadeOut(1000);
+            $(".difficulty-B").fadeOut(1000);
+            $(".difficulty-D").fadeOut(1000);
+        });
+        $('#cfchoose4').click(function(){
+            $('#cfchoose4').css('display', 'none');
+            $("#cfcheck").attr('class', 'D');
+            $(".difficulty-A").fadeOut(1000);
+            $(".difficulty-B").fadeOut(1000);
+            $(".difficulty-C").fadeOut(1000);
+        });
         $('#save-rating1').click(function(){
             $('#progress').css('display', 'block');
             var geturl = $("#problemlink").text();
