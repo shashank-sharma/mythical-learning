@@ -192,7 +192,7 @@ $('.refresh').click(function(){
             $('#problem-page').html('');
             $("#problem-page").fadeIn(1000);
             $("#problem-answer").fadeOut(1000);
-            $('#problem-answer').html('');
+            $('#problemanswer').html('');
             $("#problem-answer").fadeIn(1000);
             $(".difficulty-A").fadeIn(1000);
             $(".difficulty-B").fadeIn(1000);
