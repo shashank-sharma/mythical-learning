@@ -191,9 +191,8 @@ $('.refresh').click(function(){
             $("#problem-page").fadeOut(1000);
             $('#problem-page').html('');
             $("#problem-page").fadeIn(1000);
-            $("#problem-answer").fadeOut(1000);
+            $("#problem-answer").css('display', 'none');
             $('#problemanswer').html('');
-            $("#problem-answer").fadeIn(1000);
             $(".difficulty-A").fadeIn(1000);
             $(".difficulty-B").fadeIn(1000);
             $(".difficulty-C").fadeIn(1000);
@@ -206,6 +205,7 @@ $('.refresh').click(function(){
             $('#cfchoose2').css('display', 'block');
             $('#cfchoose3').css('display', 'block');
             $('#cfchoose4').css('display', 'block');
+            $("#cfcheck").attr('class', 'A');
         };
         $('#cfreload').click(function(){
             cfreload();
@@ -453,7 +453,11 @@ $('.refresh').click(function(){
 
         });
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////            CODEFORCES END          ///////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // save-lang1 id is used to make sure that the user get the content of their desired language only
 // For that purpose we used AJAX call to save the data which user clicked in backend

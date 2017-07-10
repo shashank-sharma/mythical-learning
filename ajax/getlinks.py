@@ -210,17 +210,19 @@ def codeforces(method, quality):
     with open(problemJSON) as data_file:
         data = json.load(data_file)
 
+    flag = 0
+
     if method == 'random':
         ############### Getting random question #################
         while True:
             rno = randint(0, 821)
             if data['result']['problems'][rno]['index'] == quality:
+                flag = 1
                 break
             else:
                 continue
     else:
         #rno = -int(method)
-        flag = 0
         for i in range(1, 821):
             if data['result']['problems'][-i]['contestId'] == int(method):
                 if quality in data['result']['problems'][-i]['index']:
