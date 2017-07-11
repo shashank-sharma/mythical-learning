@@ -7,7 +7,7 @@
 <br>
 <a class="cfgetlink btn green">I am Feeling Lucky</a>
 <br>
-<a class="center" style="color: black" href="#" id="cfreload"><i class="material-icons medium">loop</i></a>
+<a class="center" style="color: black" href="javascript:void(0);" id="cfreload"><i class="material-icons medium">loop</i></a>
 </div>
 <div class="col s12 m8 l8 center" id="difficulty">
 <h3 data="A" class = "A" id="cfcheck">Choose your difficulty</h3>
@@ -52,7 +52,7 @@
       <p>Linear mode will move as 1A, 2A, 3A ... and also if you choose B then 1B, 2B ... etc.</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
 </div>
@@ -64,8 +64,10 @@
 </div>
 
 <hr>
-<div id="problem-answer" style="font-size: 14px;display: none;">
+</div>
+<div id="problem-answer" style="font-size: 14px;display: none;padding:3%">
 <a class="cfgetanswer btn">Get</a>
+<a href = "#modal2"><p class="right flow-text" style="font-size: 14px;">help?</p></a>
 <div class="right">
 <a class="{{ A }} tooltipped" id="save-rating1" data-position="top" data-delay="50" data-tooltip="Easy"><i class="material-icons">code</i></a>
 <a class="{{ B }} tooltipped" id="save-rating2" data-position="top" data-delay="50" data-tooltip="Medium"><i class="material-icons">code</i></a>
@@ -73,24 +75,21 @@
 <a class="{{ D }} tooltipped" id="save-rating4" data-position="top" data-delay="50" data-tooltip="Expert"><i class="material-icons">code</i></a>
 <br>
 <p style="font-size: 14px" class="flow-text">Select rating for your answer</p>
-<a href = "#modal2"><p class="right flow-text" style="font-size: 14px;">help?</p></a>
   <div id="modal2" class="modal">
     <div class="modal-content">
       <h4>Answer Ratings</h4>
       <p>Each answer have its own rating on the basis of user. If user is Legendary Master then his answer will be on Expert rating and you can view it by selecting it. Each button have 3 sub division of rating. For example Easy has Novice, Begineer ratings and such like that it increases</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
 </div>
-<div id="problemanswer"></div>
 
 
 
 </div>
-
-</div>
+<br>
 <center>
 <br>
     <div class="preloader-wrapper large active" style="display: none;" id="preload">
@@ -105,5 +104,10 @@
     </div>
   </div>
   </center>
+<div id="problemanswer" style="padding:2%">
+	
+</div>
+
+</div>
 </div>
 {% endblock %}

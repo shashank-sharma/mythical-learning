@@ -340,7 +340,7 @@ $('.refresh').click(function(){
                     }
                     else
                     {
-                    $("#problemanswer").html('<div id = "cfcode">'+PR.prettyPrintOne(data[0])+'<br>'+data[1]+'<div>');
+                    $("#problemanswer").html('<div id = "cfcode">'+PR.prettyPrintOne(data[0])+'<br>'+'<a href = "'+data[1]+'">'+data[1]+'</a><div>');
                     var src = $('#cfcode').html();
                 }
                     $('#preload').css('display', 'none');
