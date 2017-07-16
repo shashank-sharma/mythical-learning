@@ -94,13 +94,16 @@ def cfgetanswer(request):
     link = request.GET['link']
     code = request.GET['code']
     if request.is_ajax():
-        content, url = getlinks.codeforcesAnswer(link, code)
+        content, url, rating, color, user = getlinks.codeforcesAnswer(link, code)
         if url == None:
             data = json.dumps('no')
             return HttpResponse(data, content_type = "application/json")
         finalData = []
         finalData.append(str(content))
         finalData.append(url)
+        finalData.append(rating)
+        finalData.append(color)
+        finalData.append(user)
         data = json.dumps(finalData)
         return HttpResponse(data, content_type = "application/json")
 '''

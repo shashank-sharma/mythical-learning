@@ -340,7 +340,14 @@ $('.refresh').click(function(){
                     }
                     else
                     {
-                    $("#problemanswer").html('<div id = "cfcode">'+PR.prettyPrintOne(data[0])+'<br>'+'<a href = "'+data[1]+'">'+data[1]+'</a><div>');
+                        if(data[3] == 'white')
+                        {
+                            rcolor = 'black'
+                        }
+                        else{
+                            rcolor = 'white'
+                        }
+                    $("#problemanswer").html('<div class="row"><div class="col s12 m6"><div class = "card flow-text '+data[3]+'" style="padding: 3%; color:'+rcolor+';">'+data[2]+' | '+data[4]+'</div></div></div>'+'<div id = "cfcode">'+PR.prettyPrintOne(data[0])+'<br>'+'<a href = "'+data[1]+'">'+data[1]+'</a><div>');
                     var src = $('#cfcode').html();
                 }
                     $('#preload').css('display', 'none');

@@ -255,7 +255,6 @@ def codeforces(method, quality):
     outputEx = m[15].find_all('pre')[1]
 
     values = (title, url, question, content, inputs, outputs, inputEx, outputEx)
-
     return values
 
 def codeforcesAnswer(url, code):
@@ -272,7 +271,8 @@ def codeforcesAnswer(url, code):
             break
     ratings = ['Legendary grandmaster',
             'International Grandmaster',
-            'Grandmaster', 'International master',
+            'Grandmaster',
+            'International master',
             'Master',
             'Candidate Master',
             'Expert',
@@ -281,6 +281,19 @@ def codeforcesAnswer(url, code):
             'Newbie',
             'Unrated,',
             'Headquarters,']
+
+    ratingscolors = ['black',
+                    'red',
+                    'red',
+                    'orange',
+                    'orange',
+                    'purple',
+                    'blue darken-4',
+                    'teal',
+                    'green',
+                    'grey',
+                    'white',
+                    'white']
 
     if code == 'Expert':
         frating = ratings[:3]
@@ -300,11 +313,17 @@ def codeforcesAnswer(url, code):
                 subbox.append(subm)
 
     if subbox == []:
-        return None, None
+        return None, None, None, None, None
     srno = randint(0, len(subbox)-1)
     subm = subbox[srno]
     subUrl = 'http://codeforces.com/contest/'+str(contestId)+'/submission/'+str(subm)
     r = requests.get(subUrl)
     soup = BeautifulSoup(r.content, "html.parser")
     l = soup.find_all('pre', {'class': 'prettyprint'})
-    return l[0], subUrl
+    m = soup.find_all('a', {'class': 'rated-user'})
+    getrating = ' '.join(m[0]['title'].split()[:-1])
+    print(getrating)
+    print(ratings.index(getrating))
+    getcolor = ratingscolors[ratings.index(getrating)]
+    cfuser = m[0].text
+    return l[0], subUrl, getrating, getcolor, cfuser
