@@ -258,9 +258,16 @@ def codeforces(method, quality):
     return values
 
 def codeforcesAnswer(url, code, version):
+    data1 = []
+    if version == 'fgpp':
+        with open('data/'+version+'2.json') as data_file:
+            data1 = json.load(data_file)
+        version = 'fgpp1'
+
     with open('data/'+version+'.json') as data_file:
         data = json.load(data_file)
 
+    data = data + data1
     url = url.split('/')
     contestId = int(url[5])
     index = url[6]
