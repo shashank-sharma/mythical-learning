@@ -93,8 +93,9 @@ def cfgetlink(request):
 def cfgetanswer(request):
     link = request.GET['link']
     code = request.GET['code']
+    version = request.GET['version']
     if request.is_ajax():
-        content, url, rating, color, user = getlinks.codeforcesAnswer(link, code)
+        content, url, rating, color, user = getlinks.codeforcesAnswer(link, code, version)
         if url == None:
             data = json.dumps('no')
             return HttpResponse(data, content_type = "application/json")

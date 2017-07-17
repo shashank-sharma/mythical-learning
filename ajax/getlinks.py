@@ -257,8 +257,8 @@ def codeforces(method, quality):
     values = (title, url, question, content, inputs, outputs, inputEx, outputEx)
     return values
 
-def codeforcesAnswer(url, code):
-    with open('data/fgpp14.json') as data_file:
+def codeforcesAnswer(url, code, version):
+    with open('data/'+version+'.json') as data_file:
         data = json.load(data_file)
 
     url = url.split('/')

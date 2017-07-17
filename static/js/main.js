@@ -327,13 +327,20 @@ $('.refresh').click(function(){
             //var code = $("a.red").attr('data-tooltip');
             var geturl = $("#problemlink").text();
             var code = $("a.red.tooltipped").attr('data-tooltip');
+            var version = document.forms[0];
+            for(var i=0; i<version.length;i++)
+            {
+                if (version[i].checked){
+                    var cfversion = version[i].value;
+                    break;
+                }
+            }
 
 
             $.ajax({
                 type: "GET",
-                url: "/ajax/cfgetanswer?link="+geturl+"&code="+code,
+                url: "/ajax/cfgetanswer?link="+geturl+"&code="+code+"&version="+cfversion,
                 success: function(data) {
-                    console.log(code);
                     if(data == 'no')
                     {
                         Materialize.toast('No more solution left', 4000);
