@@ -14,7 +14,9 @@
                 <p style="font-size: 24px;">Mythical Learning provides a platform for developers to read source code, blog according to their choice in quick and in efficient way. With our site anyone can learn, develop and its all free.</p>
             </div>
             <div class="col s6 flow-text hide-on-med-and-down left">
-                <center><p style="font-size: 32px;">Still Developing !</p></center>
+                <center><img src="{% static '/img/github-logo.png' %}"></center>
+                <center><p style="font-size: 32px;">It's an open source project. Feel free to visit my github repository</p></center>
+                <center><a href="https://github.com/shashank-sharma/mythical-learning" class="btn white" style="color: black;">Link</a>
             </div>
             <div class="hide-on-large-only center m12">
             <a href="/signup" class="btn-large">Sign Up</a>
@@ -29,8 +31,8 @@
       </div>
       <div class="col s12 m12 l6 flow-text">
       <b><p>Get best data</p></b>
-      <p style="font-size: 20px">With loads of data on various site we provide the best data on this platform according to your need. This include providing reliable source of information with links to justify that its true.</p>
-      <a href = "#">Learn more about this ></a>
+      <p style="font-size: 20px">With loads of data on various site we provide the best data on this platform according to your need. This include providing reliable source of information with links to justify that its true. For example showing best answer among thousands of competitive programming answers</p>
+      <a href = "#modal1">Learn more about this ></a>
       </div>
     </div>
     </div>
@@ -44,7 +46,7 @@
       <div class="col s12 m12 l6 flow-text">
       <b><p>Save time while reading</p></b>
       <p style="font-size: 20px">On one click get all the data in front of you. For any problem get answer with click and interactive feature you can read the source code easily in your desire language.</p>
-      <a href = "#">Learn more about this ></a>
+      <a href = "#modal2">Learn more about this ></a>
       <br>
       </div>
       <div class="col s12 m12 l6 center">
@@ -62,7 +64,7 @@
       <div class="col s12 m12 l12 flow-text center">
       <b><p>Read blogs on the go</p></b>
       <p style="font-size: 20px">With many sources we provide famous blogs which are worth reading. Rather than loading various tabs we provide feature to read blog on the same page with iframe</p>
-      <a href = "#">Learn more about this ></a>
+      <a href = "#modal3">Learn more about this ></a>
       </div>
     </div>
     </div>            <div class="container">
@@ -76,7 +78,7 @@
       <div class="col s12 m12 l12 flow-text center">
       <b><p>Get many famous courses with Codeforces Dataset</p></b>
       <p style="font-size: 20px">While solving problems on some competitive programming we might get stuck to the problem and want to see some expert answers, so here we provide you the best answer among thousands of answers sorted by their rating and you can view each of them in just one click at a time</p>
-      <a href = "#">Learn more about this ></a>
+      <a href = "#modal4">Learn more about this ></a>
       </div>
     </div>
     </div>
@@ -90,6 +92,7 @@
     </div>
     <div class="row">
     <center><p class="flow-text" style="font-size: 42px">Get data from famous sources</p></center>
+    <center class="flow-text">Currently we have more than 100,000+ data to show you</center>
     <br><br>
       <div class="row">
     <div class="col s12 m6 l3 center"><p><img src="https://i.stack.imgur.com/MybMA.png" width="50%" height="50%" /></p></div>
@@ -99,6 +102,49 @@
     <br>
     <br>
   </div>
+
+
+    <div id="modal1" class="modal">
+    <div class="modal-content flow-text">
+    <h4>Best data</h4>
+    From codeforces competitive programming websites, we managed to get all the possible solution for C++ programming language. With this we divided the given solution on the basis of user quality and rating. So in short you will get top rated answers for that particular question in just one click and you need not to worry about the correctness because all the links will also be provided to the original source.
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Got it</a>
+    </div>
+  </div>
+
+      <div id="modal2" class="modal">
+    <div class="modal-content flow-text">
+    <h4>Save time</h4>
+    Loading one single page is really annoying to overcome this problem we made loads of AJAX calls to make sure that you need not to refresh the page and you will get your content fast and in interactive way.
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Got it</a>
+    </div>
+  </div>
+
+    <div id="modal3" class="modal">
+    <div class="modal-content flow-text">
+    <h4>Blog API</h4>
+    We have attached our django web app with the hackernews API. So in short the blog page will show you blog from hundreds of them in an interactive way. This include opening the website using iframe so that you don't have to switch tabs. Also if you like any blog then you can also save them for later use.
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Got it</a>
+    </div>
+  </div>
+
+      <div id="modal4" class="modal">
+    <div class="modal-content flow-text">
+    <h4>Codeforces dataset</h4>
+    So far we have managed to get thousands of data for many questions of codeforces and because of this we are able to provide many options to you this include customize question according to your difficulty and giving you top rated anwers so that you can analyze and become one of them.
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Got it</a>
+    </div>
+  </div>
+
+
     </div>
     {% endblock %} 
     {% block pagecontent %}

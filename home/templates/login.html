@@ -31,6 +31,20 @@
     <a href="{% url 'password_reset' %}">Forgot Password ?</a>
   </form>
   <br><br>
+  <hr>
+  <a href = "#modal1" class="btn">Enter as guest</a>
+    <br><br>
+
+      <div id="modal1" class="modal">
+    <div class="modal-content flow-text">
+    <h4>Guest</h4>
+    Username: testing<br>
+    Password: similarpassword
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Got it</a>
+    </div>
+  </div>
   <div style="color: grey;">
   <a href = "/faq/security" style="color: grey;" >Security</a>
   |

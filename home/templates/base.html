@@ -66,14 +66,15 @@ li.L8 { list-style-type: decimal !important }
         <div class="progress" id="load">
       <div class="indeterminate"></div>
   </div>
-            <a class="hide-on-med-and-down left" href="/">
-              <img src="{% static '/img/mythical-large.png' %}" height="8%" width="8%" style="padding:4px;padding-left: 30px" />
-            </a>
+            <p class="hide-on-med-and-down left">
+              <img src="{% static '/img/mythical-large.png' %}" height="8%" width="8%" style="padding-left: 30px" />
+            </p>
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons">menu</i></a>
             <a class="brand-logo hide-on-large-only right">
                <img src="{% static '/img/mythical-large.png' %}" height="50px" width="40px" style="padding-top:8px;"/>
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
             {% if user.is_authenticated %}
@@ -102,7 +103,7 @@ li.L8 { list-style-type: decimal !important }
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">About</h5>
-                <p class="grey-text text-lighten-4">This web app was successful with the help of Django 1.10.7 and Python 3. All logo/images were made in Inkscape.</p>
+                <p class="grey-text text-lighten-4">Mythical learning is an open source project which focuses on reading rather than implementaitons. If you love my webapp feel free to mail me or maybe you can keep using it :D</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">More Links</h5>
@@ -117,7 +118,7 @@ li.L8 { list-style-type: decimal !important }
           <div class="footer-copyright">
             <div class="container">
             Made with Love by Shashank
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a class="grey-text text-lighten-4 right" href="#!">Copyright ?</a>
             </div>
           </div>
         </footer>
