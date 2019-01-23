@@ -9,6 +9,8 @@
 
 Real site: [Heroku final site](http://mythical-learning.herokuapp.com/)
 
+Note: Email authentication might not be working because of gmail security and need to be shifted to Sendgrid service
+
 ### What is Mythical Learning ?
 
 Mythical learning encourages developers to read source code and blogs related to their choice.
